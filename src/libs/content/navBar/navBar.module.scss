@@ -1,0 +1,37 @@
+.navBar {
+    background-color: darkorchid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    height: 4rem;
+    padding: .5rem 3rem;
+    position: fixed;
+    cursor: pointer;
+
+    &__section {
+        display: flex;
+        flex-direction: row;
+        width: min-content;
+    }
+
+    &__section > a {
+        text-decoration: none;
+    }
+
+    &__pill {
+        padding: 1rem;
+        margin: 0 1.5rem;
+        background-color: rgb(45, 45, 45);
+        transition: 0.3s;
+        border-radius: .5rem;
+        white-space: nowrap;
+        text-decoration: none !important;
+        color: white;
+    }
+
+    &__pill:hover {
+        background-color: rgb(60, 60, 60);
+        color: white;
+    }
+}
