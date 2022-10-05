@@ -1,12 +1,10 @@
+import { PostForm } from "../../libs/components/postForm/postForm";
 import { Section } from "../../libs/content/section/section";
 
 const Homepage = () => {
     return (
         <Section>
-            <head>
-                <title>Main Page</title>
-            </head>
-            This is the main page.
+            <PostForm />
         </Section>
     );
 };
