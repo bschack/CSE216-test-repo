@@ -1,0 +1,29 @@
+@use "../../styles/lib/variables";
+
+.post-loader {
+  height: 2rem;
+  width: 2rem;
+  animation: variables.$rotate-animation;
+
+  &__spinner {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: variables.$color-primary;
+    border-radius: 100% 0 0 0;
+    z-index: 0;
+  }
+
+  &__cutout {
+    width: 80%;
+    height: 80%;
+    background: variables.$color-background-dp2;
+    position: absolute;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
