@@ -1,0 +1,108 @@
+// fonts
+$font-primary: "Graphik", sans-serif;
+
+// background colors and depths
+$color-background: #121212;
+$color-background-dp1: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05)
+  ),
+  $color-background;
+$color-background-dp2: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.07)
+  ),
+  $color-background;
+$color-background-dp6: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.12)
+  ),
+  $color-background;
+$color-background-dp24: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.16)
+  ),
+  $color-background;
+
+// font colors
+$font-color-light: #ffffff;
+$font-color-dark: #000000;
+$font-color-sub: #808080;
+
+// color pallet
+$color-primary: #bb86fc;
+$color-secondary: #e2601c;
+$color-blue: #3459c8;
+$color-red: #ae0000;
+$color-green: #41c141;
+
+//borders
+$border-radius-xs: .3rem;
+$border-radius-s: .7rem;
+$border-radius-m: 1rem;
+$border-radius-l: 1.3rem;
+
+//padding
+$padding-m: 1.2rem;
+$padding-l: 1.6rem;
+$padding-xl: calc(1.425rem + 2.1vw) calc(1.325rem + 0.9vw);
+
+// animations
+
+/* Floating */
+$float-animation: floating 4s ease-in-out infinite;
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Shake */
+$shake-animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Rotate */
+$rotate-animation: rotate 1.2s linear forwards infinite;
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

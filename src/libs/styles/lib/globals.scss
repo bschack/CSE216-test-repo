@@ -1,0 +1,29 @@
+@use "./fonts";
+@use "./variables";
+
+html,
+body {
+  font-size: 1rem;
+  position: relative;
+  width: 100%;
+  font-family: variables.$font-primary;
+  overflow-x: hidden;
+  margin: 0;
+  /* stylelint-disable-next-line property-no-unknown */
+  font-smooth: subpixel-antialiased;
+
+  /* Allow percentage-based heights in the application */
+  block-size: 100%;
+
+  /* Making sure text size is only controlled by font-size */
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizespeed;
+  scroll-behavior: smooth;
+  background-color: variables.$color-background;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: variables.$color-background-dp2;
+  }
+}
