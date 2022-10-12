@@ -1,0 +1,43 @@
+@use "../../styles/lib/variables";
+
+.stats-bar {
+  &__body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 12rem;
+  }
+
+  &__module {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.3rem;
+    color: variables.$font-color-sub;
+    font-size: .8rem;
+    font-weight: 400;
+    border-radius: variables.$border-radius-xs;
+    padding: 3px 5px;
+    user-select: none;
+    background: variables.$color-background-dp2;
+
+    &:hover {
+      background: variables.$color-background-dp6;
+    }
+
+    &-commented > path,
+    &-comment:hover > svg > path {
+      fill: variables.$color-blue;
+    }
+
+    &-liked > path,
+    &-like:hover > svg > path {
+      fill: variables.$color-green;
+    }
+
+    &-disliked > path,
+    &-dislike:hover > svg > path {
+      fill: variables.$color-red;
+    }
+  }
+}
