@@ -1,12 +1,19 @@
+@use "../../styles/lib/variables";
+
 .post-form {
   font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 
   &__container {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07)), #121212;
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, 0.07)
+      ),
+      #121212;
     padding: 25px;
-    width: 750px;
+    width: calc(40rem + 3vw);
     height: min-content;
     display: flexbox;
     border-radius: 15px;
@@ -45,7 +52,7 @@
   &__submit {
     font-size: inherit;
     font-weight: 550;
-    background-color: #BB86FC;
+    background-color: #bb86fc;
     color: black;
     display: flex;
     flex-direction: row;
@@ -56,6 +63,10 @@
     border: none;
     user-select: none;
     cursor: pointer;
+
+    &-failed {
+      animation: variables.$shake-animation;
+    }
   }
 
   &__submit:disabled {
