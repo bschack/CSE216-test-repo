@@ -1,0 +1,119 @@
+@use "../../styles/lib/variables";
+
+.post-card {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: variables.$padding-l;
+    gap: 1.3rem;
+    max-width: calc(50rem + 20vw);
+    height: fit-content;
+
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, 0.07)
+      ),
+      #121212;
+    border-radius: variables.$border-radius-l;
+    flex-grow: 1;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &-username {
+      color: variables.$font-color-light;
+      font-family: 'Graphik';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+  }
+  &__menu {
+    fill: variables.$color-secondary;
+    border-radius: variables.$border-radius-xs;
+    padding: 3px 5px;
+    user-select: none;
+
+    &-dropdown {
+      // margin-top: 1rem;
+      position: absolute;
+      background: variables.$color-background-dp24;
+      transform: translateX(-45%);
+      padding: 3px 5px;
+      border-radius: variables.$border-radius-xs;
+      overflow: hidden;
+      height: 0;
+      display: none;
+      font-size: small;
+
+      & > hr {
+        border: none;
+        height: 1px;
+        background-color: variables.$font-color-sub;
+        margin: 0;
+      }
+
+      &-edit {
+        color: variables.$font-color-sub;
+      }
+
+      &-delete {
+        color: variables.$color-red;
+      }
+    }
+
+    &:hover {
+      background: variables.$color-background-dp6;
+    }
+
+    &:hover &-dropdown {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: .6s dropdown cubic-bezier(0.075, 0.82, 0.165, 1);
+      height: 2.5rem;
+    }
+  }
+
+  &__date {
+    color: variables.$font-color-sub;
+    font-family: 'Graphik';
+    font-style: normal;
+    font-weight: 300;
+    font-size: .7rem;
+  }
+
+  &__title {
+    color: variables.$font-color-light;
+    font-family: 'Graphik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 13px;
+  }
+
+  &__content {
+    color: variables.$font-color-light;
+    font-family: 'Graphik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: .9rem;
+    line-height: 1.2rem;
+  }
+}
+
+@keyframes dropdown {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 2.5rem;
+  }
+}
