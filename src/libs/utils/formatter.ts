@@ -13,7 +13,9 @@ export const formatDate = (dateStr: string | number | Date) => {
   return formatted;
 };
 
-export const formatNumber = (number: number) => {
+export const formatNumber = (number: number | undefined) => {
+  if (!number) return `${Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(0)}`;
+  
   if (number >= 1_000_000) {
     return `${Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(
       number/1_000_000
