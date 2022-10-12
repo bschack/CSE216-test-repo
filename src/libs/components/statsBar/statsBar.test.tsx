@@ -8,11 +8,11 @@ import { statsBarProps } from "./statsBar.types";
 const post: statsBarProps = {
   type: "post",
   id: 1,
-  likes: faker.datatype.number({ min: 0 }),
+  likes: faker.datatype.number({ min: 1_000_000 }),
   liked: faker.datatype.boolean(),
-  dislikes: faker.datatype.number({ min: 0 }),
+  dislikes: faker.datatype.number({ min: 1_000, max: 999_999 }),
   disliked: faker.datatype.boolean(),
-  comments: faker.datatype.number({ min: 0 }),
+  comments: faker.datatype.number({ min: 0, max: 999 }),
   commented: faker.datatype.boolean()
 };
 describe("Stats Bar Numbers", () => {
