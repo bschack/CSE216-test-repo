@@ -30,9 +30,9 @@ describe("Stats Bar Numbers", () => {
   );
 
   it("should display formatted numbers", () => {
-    const passLikes = screen.getAllByText(formatNumber(post.likes || 0));
-    const passDislikes = screen.getAllByText(formatNumber(post.dislikes || 0));
-    const passComments = screen.getAllByText(formatNumber(post.comments || 0));
+    const passLikes = screen.getAllByText(formatNumber(post.likes));
+    const passDislikes = screen.getAllByText(formatNumber(post.dislikes));
+    const passComments = screen.getAllByText(formatNumber(post.comments));
     expect(passLikes).toHaveLength(1);
     expect(passDislikes).toHaveLength(1);
     expect(passComments).toHaveLength(1);
