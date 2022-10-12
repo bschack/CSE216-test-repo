@@ -1,0 +1,62 @@
+@use "../../styles/lib/variables";
+
+.alert {
+  &__container {
+    position: fixed;
+    bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    left: 3rem;
+    gap: .5rem;
+  }
+
+  &__body {
+    animation: 5s fade-out cubic-bezier(0.075, 0.82, 0.165, 1);
+    max-width: 10rem;
+    border-radius: variables.$border-radius-s;
+    padding: variables.$padding-m;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3px;
+    opacity: 0;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+
+    &-error {
+      background-color: #ae0000ce;
+      color: variables.$font-color-light;
+    }
+
+    &-success {
+      background-color: #41c141bc;
+      color: variables.$font-color-light;
+    }
+  }
+
+  &__type {
+    color: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  &__contents {
+    color: inherit;
+    font-weight: 400;
+    font-size: .8rem;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
