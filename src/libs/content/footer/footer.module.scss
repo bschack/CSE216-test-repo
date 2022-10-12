@@ -1,0 +1,53 @@
+@use "../../styles/lib/variables";
+
+.footer {
+  &__container {
+    padding: variables.$padding-xl;
+    background: variables.$color-background-dp1;
+    color: variables.$font-color-sub;
+
+    & > hr {
+      border: none;
+      height: 1px;
+      background: variables.$font-color-sub;
+      margin-top: calc(1.475rem + 2.7vw);
+      margin-bottom: calc(1.325rem + 0.9vw);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+
+    &-logo {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: small;
+      gap: 5px;
+
+      & > img {
+        height: 2rem;
+        filter: grayscale(100%);
+        filter: contrast(0);
+      }
+    }
+  }
+
+  &__rights {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+
+    & > div {
+      font-size: small;
+
+      & > span {
+        font-weight: 500;
+      }
+    }
+  }
+}
