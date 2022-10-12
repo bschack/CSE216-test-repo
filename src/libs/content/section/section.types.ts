@@ -1,5 +1,8 @@
 import { ReactNode } from "react";
 
 export type sectionProps = {
-  children?: ReactNode,
+  children?: ReactNode;
+  space?: boolean;
+  posts?: boolean;
+  className?: string;
 };
