@@ -2,10 +2,8 @@ import { postCardProps } from "./postCard.types";
 import { formatDate } from "../../utils/formatter";
 import { StatsBar } from "../statsBar/statsBar";
 import { testUsers } from "../../constants/constants";
-import { MenuIcon } from "../../icons/src/menuIcon";
 
 import styles from "./postCard.module.scss";
-//import { useState } from "react";
 
 export const PostCard = ({
   id,
