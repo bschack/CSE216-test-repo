@@ -1,3 +1,10 @@
+export const GOOGLE_API_KEY = "AIzaSyBIZYF7L_sJHU0eiQVNfIA57gV4MGuJy2c";
+
+export const GOOGLE_CLIENT_ID =
+  "695813219949-5s8n15hvcvcj7vh0955i19t21qloh3ur.apps.googleusercontent.com";
+
+export const GOOGLE_CLIENT_SECRET = "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";
+
 type postCardProps = {
   id: number;
   message: string;
