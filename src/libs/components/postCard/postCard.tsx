@@ -23,18 +23,6 @@ export const PostCard = ({
         <div className={styles["post-card__header-username"]}>
           {username ? username : "Anonymous Pumpkin"}
         </div>
-        <div className={styles["post-card__menu"]}>
-          <MenuIcon />
-          <div className={styles["post-card__menu-dropdown"]}>
-            <div className={styles["post-card__menu-dropdown-edit"]}>
-              Edit Post
-            </div>
-            <hr />
-            <div className={styles["post-card__menu-dropdown-delete"]}>
-              Delete Post
-            </div>
-          </div>
-        </div>
       </div>
       {title ? <div className={styles["post-card__title"]}>{title}</div> : null}
       <div className={styles["post-card__content"]}>{message}</div>
