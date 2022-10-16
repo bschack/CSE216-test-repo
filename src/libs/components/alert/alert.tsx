@@ -41,19 +41,20 @@ export const AlertBox = (
     }, 6000);
   };
 
-  const Alerts = () => (
-    <div className={styles["alert__container"]}>
-      {alerts.map((alert: alertProps) => {
-        return (
-          <Alert
-            key={alerts.indexOf(alert)}
-            type={alert.type}
-            content={alert.content}
-          />
-        );
-      })}
-    </div>
-  );
+  const Alerts = () =>
+    alerts.length > 0 ? (
+      <div className={styles["alert__container"]}>
+        {alerts.map((alert: alertProps) => {
+          return (
+            <Alert
+              key={alerts.indexOf(alert)}
+              type={alert.type}
+              content={alert.content}
+            />
+          );
+        })}
+      </div>
+    ) : null;
 
   return { addAlert, Alerts };
 };

@@ -20,13 +20,6 @@ export const PostForm = () => {
   const [alertsList, setAlertsList] = useState<alertProps[]>([]);
   const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
 
-  const AlertList = () => {
-    if (alertsList.length > 0) {
-      return <Alerts />;
-    }
-    return null;
-  };
-
   const handleChange = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
@@ -111,7 +104,7 @@ export const PostForm = () => {
           <PostLoader />
         )}
       </form>
-      <AlertList />
+      <Alerts />
     </div>
   );
 };
