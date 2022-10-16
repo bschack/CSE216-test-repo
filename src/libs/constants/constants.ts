@@ -5,6 +5,13 @@ export const GOOGLE_CLIENT_ID =
 
 export const GOOGLE_CLIENT_SECRET = "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";
 
+const LOCAL_BACKEND = "http://localhost:4567";
+
+export const BACKEND_URL =
+  process.env.NODE_ENV === "development"
+    ? LOCAL_BACKEND
+    : "https://frozen-lowlands-54266.herokuapp.com";
+
 type postCardProps = {
   id: number;
   message: string;
@@ -36,6 +43,11 @@ export const postFailedAlert: alertProps = {
 export const postSuccessAlert: alertProps = {
   type: "Success",
   content: "Your message was posted!"
+};
+
+export const loginSuccessAlert: alertProps = {
+  type: "Success",
+  content: "You have been logged in!"
 };
 
 export const testUsers: userProps = {
