@@ -1,16 +1,21 @@
-import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { GOOGLE_CLIENT_ID } from "../../libs/constants/constants";
 import { Section } from "../../libs/content/section/section";
-import { LoginPageProps } from "./login.types";
-// import { useGoogleLogin } from "react-google-login";
+import { loginUser } from "../../libs/hooks/loginUser";
+import { LoginPageProps } from "./loginPage.types";
+// import jwtDecode from "jwt-decode";
+// import { LoginPageProps } from "./login.types";
 
 export const LoginPage = ({ login }: LoginPageProps) => {
-  const handleCredentialResponse = (res: any) => {
-    console.log("Encoded JWT ID token: " + res.credential);
-    const userObject = jwtDecode(res.credential);
-    console.log(userObject);
-    login(userObject);
+  const navigate = useNavigate();
+  const handleCredentialResponse = async (res: any) => {
+    // console.log("Encoded JWT ID token: " + res.credential);
+    const credential = res.credential;
+    await loginUser(credential).then(() => {
+      login(true);
+      navigate("/home");
+    });
   };
 
   useEffect(() => {
