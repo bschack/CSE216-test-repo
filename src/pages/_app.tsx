@@ -5,18 +5,32 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import { LoginPage } from "./login/login";
+import { LoginPage } from "./loginPage/loginPage";
 import Homepage from "./homepage/homepage";
 // import { NavBar } from '../libs/content/navBar/navBar';
 import "../libs/styles/lib/globals.scss";
 import { Footer } from "../libs/content/footer/footer";
-import { useState } from "react";
-import { googleUserType } from "../libs/constants/types";
+import { useEffect, useState } from "react";
+import { alertProps, loginSuccessAlert } from "../libs/constants/constants";
+import { AlertBox } from "../libs/components/alert/alert";
+// import { googleUserType } from "../libs/constants/types";
 
 const App = () => {
-  const [user, setUser] = useState<googleUserType>();
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  // const uuid = user?.email.split("@")[0];
+  const c = window.sessionStorage.getItem("user_logged_in");
 
-  const uuid = user?.email.split("@")[0];
+  const [alertsList, setAlertsList] = useState<alertProps[]>([]);
+  const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
+
+  useEffect(() => {
+    if (c === "true") {
+      setLoggedIn(true);
+      addAlert(loginSuccessAlert);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [addAlert, c]);
 
   return (
     <Router>
@@ -24,19 +38,22 @@ const App = () => {
       <Link to="/profile">Profile</Link>
       <Routes>
         <Route
-          path="/*"
-          element={user ? <Navigate to="/home" /> : <Navigate to="/login" />}
+          path="*"
+          element={
+            loggedIn ? <Navigate to="/home" /> : <Navigate to="/login" />
+          }
         />
-        {user ? (
+        {loggedIn ? (
           <>
             <Route path="/home" element={<Homepage />} />
-            <Route path="/profile" element={uuid} />
+            <Route path="/profile" element={"Profile page"} />
           </>
         ) : (
-          <Route path="/login" element={<LoginPage login={setUser} />} />
+          <Route path="/login" element={<LoginPage login={setLoggedIn} />} />
         )}
       </Routes>
       <Footer />
+      <Alerts />
     </Router>
   );
 };
