@@ -10,8 +10,8 @@ import { LoginPageProps } from "./loginPage.types";
 export const LoginPage = ({ login }: LoginPageProps) => {
   const navigate = useNavigate();
   const handleCredentialResponse = async (res: any) => {
-    // console.log("Encoded JWT ID token: " + res.credential);
     const credential = res.credential;
+    // console.log("Encoded JWT ID token: " + credential);
     await loginUser(credential).then(() => {
       login(true);
       navigate("/home");
