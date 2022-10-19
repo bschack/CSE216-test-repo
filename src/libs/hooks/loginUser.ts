@@ -1,6 +1,7 @@
 import { BACKEND_URL } from "../constants/constants";
 //communicates with the backend to actually create a new post
 export const loginUser = async (token: string) => {
+  let loginData;
   //sends input to backend and waits for approval
   await fetch(`${BACKEND_URL}/login`, {
     method: "POST",
@@ -15,8 +16,7 @@ export const loginUser = async (token: string) => {
     .then(response => {
       // If we get an "ok" message, return the json
       if (response.ok) {
-        window.sessionStorage.setItem("user_logged_in", "true");
-        console.log(response);
+        // window.sessionStorage.setItem("user_logged_in", "true");
         return Promise.resolve(response.json());
       } else {
         // Otherwise, handle server errors with a detailed popup message
@@ -27,7 +27,13 @@ export const loginUser = async (token: string) => {
       }
       return Promise.reject(response);
     })
+    .then(data => {
+      loginData = data;
+    })
     .catch(error => {
       console.warn("Something went wrong.", error);
+      throw new Error("There was a problem logging in...");
     });
+
+  return loginData;
 };
