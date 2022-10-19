@@ -26,5 +26,6 @@ export type sessionProps =
   | {
       sessionHash: string;
       status: string;
+      uid: number;
     }
   | undefined;

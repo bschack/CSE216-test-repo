@@ -21,6 +21,7 @@ export const LoginPage = ({ login }: LoginPageProps) => {
         // console.log(sh);
         if (typeof sh === "object") {
           window.sessionStorage.setItem("shk", sh.sessionHash);
+          window.sessionStorage.setItem("uid", `${sh.uid}`);
           login(sh.sessionHash);
         }
       })
