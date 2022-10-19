@@ -13,22 +13,21 @@ import { Footer } from "../libs/content/footer/footer";
 import { useEffect, useState } from "react";
 import { alertProps, loginSuccessAlert } from "../libs/constants/constants";
 import { AlertBox } from "../libs/components/alert/alert";
-// import { googleUserType } from "../libs/constants/types";
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [loggedIn, setLoggedIn] = useState<string>("");
   // const uuid = user?.email.split("@")[0];
-  const c = window.sessionStorage.getItem("user_logged_in");
+  const c = window.sessionStorage.getItem("shk") || "";
 
   const [alertsList, setAlertsList] = useState<alertProps[]>([]);
   const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
 
   useEffect(() => {
-    if (c === "true") {
-      setLoggedIn(true);
+    if (c !== "") {
+      setLoggedIn(c);
       addAlert(loginSuccessAlert);
     } else {
-      setLoggedIn(false);
+      setLoggedIn("");
     }
   }, [addAlert, c]);
 
@@ -40,10 +39,10 @@ const App = () => {
         <Route
           path="*"
           element={
-            loggedIn ? <Navigate to="/home" /> : <Navigate to="/login" />
+            loggedIn !== "" ? <Navigate to="/home" /> : <Navigate to="/login" />
           }
         />
-        {loggedIn ? (
+        {loggedIn !== "" ? (
           <>
             <Route path="/home" element={<Homepage />} />
             <Route path="/profile" element={"Profile page"} />
