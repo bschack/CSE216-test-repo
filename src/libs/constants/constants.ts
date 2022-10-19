@@ -43,6 +43,11 @@ export const loginSuccessAlert: alertProps = {
   content: "You have been logged in!"
 };
 
+export const loginFailedAlert: alertProps = {
+  type: "Error",
+  content: "There was a problem logging you in..."
+};
+
 export const testUsers: userProps = {
   userId: 1,
   username: "Test User",
