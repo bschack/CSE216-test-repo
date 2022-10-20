@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
-  alertProps,
   GOOGLE_CLIENT_ID,
-  loginFailedAlert
+  loginFailedAlert,
+  loginSuccessAlert
 } from "../../libs/constants/constants";
 import { Section } from "../../libs/content/section/section";
 import { loginUser } from "../../libs/hooks/loginUser";
 import { LoginPageProps, sessionProps } from "./loginPage.types";
-import { AlertBox } from "../../libs/components/alert/alert";
 
-export const LoginPage = ({ login }: LoginPageProps) => {
-  const [alertsList, setAlertsList] = useState<alertProps[]>([]);
-  const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
-
+export const LoginPage = ({ login, alerts }: LoginPageProps) => {
   const handleCredentialResponse = async (res: any) => {
     const credential = res.credential;
 
@@ -23,11 +19,12 @@ export const LoginPage = ({ login }: LoginPageProps) => {
           window.sessionStorage.setItem("shk", sh.sessionHash);
           window.sessionStorage.setItem("uid", `${sh.uid}`);
           login(sh.sessionHash);
+          alerts(loginSuccessAlert);
         }
       })
       .catch((err) => {
         console.warn(err);
-        addAlert(loginFailedAlert);
+        alerts(loginFailedAlert);
       });
   };
 
@@ -51,7 +48,6 @@ export const LoginPage = ({ login }: LoginPageProps) => {
   return (
     <Section space>
       <div id="buttonDiv"></div>
-      <Alerts />
     </Section>
   );
 };

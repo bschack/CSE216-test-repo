@@ -1,24 +1,17 @@
 import clsx from "clsx";
 import { useState } from "react";
-import {
-  alertProps,
-  postFailedAlert,
-  postSuccessAlert
-} from "../../constants/constants";
+import { postFailedAlert, postSuccessAlert } from "../../constants/constants";
 import { createPost } from "../../hooks/createPost";
-import { AlertBox } from "../alert/alert";
 import { PostLoader } from "../postLoader/postLoader";
 
 import styles from "./postForm.module.scss";
+import { postFormProps } from "./postForm.types";
 
-export const PostForm = () => {
+export const PostForm = ({ alerts }: postFormProps) => {
   const [message, setMessage] = useState("");
   const [focus, setFocus] = useState(false);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
-
-  const [alertsList, setAlertsList] = useState<alertProps[]>([]);
-  const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
 
   const handleChange = (e: any) => {
     e.preventDefault();
@@ -51,9 +44,9 @@ export const PostForm = () => {
       if (success) {
         setMessage("");
         setFocus(false);
-        addAlert(postSuccessAlert);
+        alerts(postSuccessAlert);
       } else {
-        addAlert(postFailedAlert);
+        alerts(postFailedAlert);
         postFailed();
       }
     }, 1500);
@@ -104,7 +97,6 @@ export const PostForm = () => {
           <PostLoader />
         )}
       </form>
-      <Alerts />
     </div>
   );
 };

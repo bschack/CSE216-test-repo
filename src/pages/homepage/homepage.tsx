@@ -2,8 +2,9 @@ import { PostCard } from "../../libs/components/postCard/postCard";
 import { PostForm } from "../../libs/components/postForm/postForm";
 import { testPost } from "../../libs/constants/constants";
 import { Section } from "../../libs/content/section/section";
+import { homepageProps } from "./homepage.types";
 
-const Homepage = () => {
+const Homepage = ({ alerts }: homepageProps) => {
   const posts = testPost;
 
   const cardedPosts = posts.map((post) => (
@@ -19,7 +20,7 @@ const Homepage = () => {
   return (
     <Section space>
       <Section>
-        <PostForm />
+        <PostForm alerts={alerts} />
       </Section>
       <Section posts>{cardedPosts}</Section>
     </Section>

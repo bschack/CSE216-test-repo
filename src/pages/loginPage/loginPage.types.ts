@@ -1,7 +1,9 @@
 import { Dispatch } from "react";
+import { alertProps } from "../../libs/constants/constants";
 
 export type LoginPageProps = {
   login: Dispatch<React.SetStateAction<string>>;
+  alerts: ({ type, content }: alertProps) => void;
 };
 
 export type googleUserType = {

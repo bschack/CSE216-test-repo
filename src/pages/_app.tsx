@@ -11,7 +11,7 @@ import Homepage from "./homepage/homepage";
 import "../libs/styles/lib/globals.scss";
 import { Footer } from "../libs/content/footer/footer";
 import { useEffect, useState } from "react";
-import { alertProps, loginSuccessAlert } from "../libs/constants/constants";
+import { alertProps } from "../libs/constants/constants";
 import { AlertBox } from "../libs/components/alert/alert";
 import { ProfilePage } from "./profilePage/profilePage";
 
@@ -27,7 +27,6 @@ const App = () => {
   useEffect(() => {
     if (shk !== "") {
       setLoggedIn(shk);
-      addAlert(loginSuccessAlert);
     } else {
       setLoggedIn("");
     }
@@ -42,11 +41,14 @@ const App = () => {
         <Route path="/profile" element={<Navigate to={`/profile/${uid}`} />} />
         {loggedIn !== "" ? (
           <>
-            <Route path="/home" element={<Homepage />} />
+            <Route path="/home" element={<Homepage alerts={addAlert} />} />
             <Route path="/profile/:uid" element={<ProfilePage />} />
           </>
         ) : (
-          <Route path="/login" element={<LoginPage login={setLoggedIn} />} />
+          <Route
+            path="/login"
+            element={<LoginPage login={setLoggedIn} alerts={addAlert} />}
+          />
         )}
         <Route
           path="/*"
