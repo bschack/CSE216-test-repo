@@ -48,6 +48,11 @@ export const loginFailedAlert: alertProps = {
   content: "There was a problem logging you in..."
 };
 
+export const userDNE: alertProps = {
+  type: "Error",
+  content: "This user does not exist."
+};
+
 export const testUsers: userProps = {
   userId: 1,
   username: "Test User",

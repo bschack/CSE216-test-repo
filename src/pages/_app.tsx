@@ -19,7 +19,7 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState<string>("");
   // const uuid = user?.email.split("@")[0];
   const shk = window.sessionStorage.getItem("shk") || "";
-  const uid = window.sessionStorage.getItem("uid") || "";
+  const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
 
   const [alertsList, setAlertsList] = useState<alertProps[]>([]);
   const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
@@ -36,6 +36,7 @@ const App = () => {
     <Router>
       <Link to="/home">Home</Link>
       <Link to={`/profile`}>Profile</Link>
+      <Link to={`/profile/1`}>Test valid profile for other person</Link>
       <Link to={`/profile/9999`}>Test invalid profile</Link>
       <Routes>
         {loggedIn !== "" ? (
@@ -45,7 +46,10 @@ const App = () => {
               path="/profile"
               element={<Navigate to={`/profile/${uid}`} />}
             />
-            <Route path="/profile/:uid" element={<ProfilePage />} />
+            <Route
+              path="/profile/:uid"
+              element={<ProfilePage uid={uid} alerts={addAlert} />}
+            />
             <Route path="/login" element={<Navigate to="/home" />} />
           </>
         ) : (

@@ -1,3 +1,5 @@
+import { alertProps } from "../../libs/constants/constants";
+
 export type profileProps =
   | {
       uid: number;
@@ -10,5 +12,6 @@ export type profileProps =
   | undefined;
 
 export type profilePageProps = {
-  shk: string;
+  uid: number;
+  alerts: ({ type, content }: alertProps) => void;
 };

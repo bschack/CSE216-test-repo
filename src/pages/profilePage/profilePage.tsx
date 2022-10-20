@@ -1,32 +1,39 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { userDNE } from "../../libs/constants/constants";
 import { getUser } from "../../libs/hooks/getUser";
-import { profileProps } from "./profilePage.types";
+import { profilePageProps, profileProps } from "./profilePage.types";
 
-export const ProfilePage = () => {
+export const ProfilePage = ({ uid, alerts }: profilePageProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<profileProps>();
   const params = useParams();
-  const uid = parseInt(params.uid || "-1");
+  const TargetUid = parseInt(params.uid || "-1");
 
   const refreshUser = async () => {
-    await getUser(uid)
+    await getUser(TargetUid)
       .then((res) => {
         setUser(res);
       })
       .catch((err) => {
         console.warn(err);
+        alerts(userDNE);
         navigate("/profile");
       });
   };
 
   useEffect(() => {
-    if (uid < 0) {
+    if (TargetUid < 0) {
       console.warn("Invalid user id");
       return;
     }
     refreshUser();
   });
 
-  return <div>{user?.bio}</div>;
+  return (
+    <div>
+      <div>{user?.uid === uid ? "This is my profile" : null}</div>
+      {user?.bio}
+    </div>
+  );
 };
