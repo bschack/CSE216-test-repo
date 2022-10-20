@@ -28,6 +28,11 @@ body {
   }
 }
 
+*::selection {
+  background: variables.$color-primary;
+  color: variables.$font-color-dark;
+}
+
 #root {
   display: flex;
   flex-direction: column;
