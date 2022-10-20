@@ -38,11 +38,15 @@ const App = () => {
       <Link to={`/profile`}>Profile</Link>
       <Link to={`/profile/9999`}>Test invalid profile</Link>
       <Routes>
-        <Route path="/profile" element={<Navigate to={`/profile/${uid}`} />} />
         {loggedIn !== "" ? (
           <>
             <Route path="/home" element={<Homepage alerts={addAlert} />} />
+            <Route
+              path="/profile"
+              element={<Navigate to={`/profile/${uid}`} />}
+            />
             <Route path="/profile/:uid" element={<ProfilePage />} />
+            <Route path="/login" element={<Navigate to="/home" />} />
           </>
         ) : (
           <Route
@@ -50,12 +54,10 @@ const App = () => {
             element={<LoginPage login={setLoggedIn} alerts={addAlert} />}
           />
         )}
-        <Route
-          path="/*"
-          element={
-            loggedIn !== "" ? <Navigate to="/home" /> : <Navigate to="/login" />
-          }
-        />
+
+        {loggedIn === "" ? (
+          <Route path="/*" element={<Navigate to="/login" />} />
+        ) : null}
       </Routes>
       <Footer />
       <Alerts />
