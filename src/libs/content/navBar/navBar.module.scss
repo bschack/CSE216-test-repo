@@ -1,37 +1,171 @@
+@use "../../styles/lib/variables";
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
 .navBar {
-    background-color: darkorchid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 25px;
+
+  width: calc(100vw - 50px);
+  height: 80px;
+
+  background: rgba(18, 18, 18, 0.9);
+  backdrop-filter: blur(5px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  // position: fixed;
+  z-index: 50;
+
+  &__logo {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    width: 100vw;
-    height: 4rem;
-    padding: .5rem 3rem;
-    position: fixed;
+    font-family: "Poppins", sans-serif;
+    font-size: 4em;
+    user-select: none;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2.5px variables.$color-blue;
+    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      letter-spacing: .3rem;
+
+      & > div {
+        animation: variables.$spin-animation;
+        animation-delay: .5s;
+      }
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+  }
+
+  &__section > a {
+    text-decoration: none;
     cursor: pointer;
+  }
 
-    &__section {
-        display: flex;
-        flex-direction: row;
-        width: min-content;
+  &__button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    transition: .5s cubic-bezier(.31, .31, .31, 1);
+
+    &:hover > a,
+    &:hover > div {
+      opacity: .5;
+
+      &:hover {
+        opacity: 1;
+      }
     }
 
-    &__section > a {
-        text-decoration: none;
+    & > a:active {
+      color: variables.$color-blue;
+    }
+  }
+
+  &__link {
+    padding: 0 15px;
+    cursor: pointer;
+    text-decoration: none;
+    color: variables.$font-color-sub;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 0.07em;
+    user-select: none;
+    transition: 1s cubic-bezier(.31, .31, .31, 1);
+    height: 1.5rem;
+    text-transform: uppercase;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:after {
+      display: block;
+      content: '';
+      background: linear-gradient(white, white) padding-box,
+        linear-gradient(
+            to right,
+            variables.$color-primary,
+            variables.$color-violet,
+            variables.$color-pink,
+            variables.$color-primary
+          )
+          border-box;
+      border: 2px solid transparent;
+      transform: scaleX(0) translateY(.5rem);
+      animation: variables.$background-pan;
+      background-size: 200%;
+      transition: transform 250ms ease-in-out;
+      border-radius: 5px;
     }
 
-    &__pill {
-        padding: 1rem;
-        margin: 0 1.5rem;
-        background-color: rgb(45, 45, 45);
-        transition: 0.3s;
-        border-radius: .5rem;
-        white-space: nowrap;
-        text-decoration: none !important;
-        color: white;
+    &:hover:after,
+    &-active:after {
+      transform: scaleX(1) translateY(.5rem);
     }
 
-    &__pill:hover {
-        background-color: rgb(60, 60, 60);
-        color: white;
+    &-active {
+      fill: variables.$color-secondary;
     }
+
+    &-home > &-home-text {
+      width: 0px;
+      overflow: hidden;
+      margin-left: -10px;
+    }
+
+    &-home:hover > &-home-text {
+      animation: variables.$slide-animation;
+      width: fit-content;
+      margin-left: 0;
+    }
+  }
+
+  &__icon {
+    height: 20px;
+    width: fit-content;
+    fill: variables.$font-color-sub;
+  }
+
+  &__link:hover > &__icon {
+    fill: variables.$color-secondary;
+  }
+
+  &__username {
+    background: variables.$gradient-background-purple;
+    animation: variables.$background-pan;
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    height: 100%;
+    width: 100%;
+    border-radius: 0 100px 100px 0;
+  }
+
+  &__nameLoader {
+    background: variables.$gradient-background-purple;
+    animation: variables.$background-pan;
+    background-size: 200%;
+    height: 20px;
+    width: 40px;
+    border-radius: variables.$border-radius-xs;
+  }
 }
