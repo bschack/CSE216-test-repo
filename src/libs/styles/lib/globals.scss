@@ -4,10 +4,11 @@
 html,
 body {
   font-size: 1rem;
-  position: relative;
-  width: 100%;
+  display: block;
+  width: 100vw;
+  height: 100vh;
   font-family: variables.$font-primary;
-  overflow-x: hidden;
+  overflow: hidden;
   margin: 0;
   /* stylelint-disable-next-line property-no-unknown */
   font-smooth: subpixel-antialiased;
@@ -23,19 +24,21 @@ body {
   scroll-behavior: smooth;
   background-color: variables.$color-background;
   color: variables.$font-color-light;
+}
 
-  &::-webkit-scrollbar-thumb {
-    background-color: variables.$color-background-dp2;
-  }
+a {
+  text-decoration: none;
 }
 
 *::selection {
   background: variables.$color-primary;
   color: variables.$font-color-dark;
+  -webkit-text-stroke: variables.$font-color-dark;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: overlay;
 }
