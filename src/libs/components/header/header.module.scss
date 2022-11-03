@@ -1,0 +1,21 @@
+.header {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: xx-large;
+  padding-bottom: 1rem;
+  animation: raise 1.5s linear infinite;
+  animation-play-state: paused;
+  animation-delay: var(--scroll);
+}
+
+@keyframes raise {
+  50% {
+    transform: translateY(-2rem);
+    opacity: .3;
+  }
+  100% {
+    transform: translateY(-5rem);
+    opacity: 0;
+  }
+}
