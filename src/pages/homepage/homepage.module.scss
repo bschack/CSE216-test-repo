@@ -1,1 +1,19 @@
+@use "../../libs/styles/lib/variables";
 
+.homepage {
+  &__new-posts {
+    border: 1px solid variables.$color-secondary;
+    border-radius: variables.$border-radius-s;
+    padding: variables.$padding-s variables.$padding-m;
+    text-align: center;
+    width: fit-content;
+    user-select: none;
+    cursor: pointer;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    color: variables.$color-secondary;
+  }
+
+  &__new-posts:hover {
+    background-color: #e2611c21;
+  }
+}
