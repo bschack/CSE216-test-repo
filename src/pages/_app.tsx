@@ -1,19 +1,21 @@
 import {
   BrowserRouter as Router,
-  Link,
   Navigate,
   Route,
   Routes
 } from "react-router-dom";
 import { LoginPage } from "./loginPage/loginPage";
 import Homepage from "./homepage/homepage";
-// import { NavBar } from '../libs/content/navBar/navBar';
 import "../libs/styles/lib/globals.scss";
 import { Footer } from "../libs/content/footer/footer";
 import { useEffect, useState } from "react";
 import { alertProps } from "../libs/constants/constants";
 import { AlertBox } from "../libs/components/alert/alert";
 import { ProfilePage } from "./profilePage/profilePage";
+import { NavBar } from "../libs/content/navBar/navBar";
+import styles from "./app.module.scss";
+import clsx from "clsx";
+import { PostPage } from "./postPage/postPage";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState<string>("");
@@ -23,6 +25,8 @@ const App = () => {
 
   const [alertsList, setAlertsList] = useState<alertProps[]>([]);
   const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
+
+  const lin = loggedIn !== "";
 
   useEffect(() => {
     if (shk !== "") {
@@ -34,36 +38,39 @@ const App = () => {
 
   return (
     <Router>
-      <Link to="/home">Home</Link>
-      <Link to={`/profile`}>Profile</Link>
-      <Link to={`/profile/1`}>Test valid profile for other person</Link>
-      <Link to={`/profile/9999`}>Test invalid profile</Link>
-      <Routes>
-        {loggedIn !== "" ? (
-          <>
-            <Route path="/home" element={<Homepage alerts={addAlert} />} />
+      {lin ? <NavBar /> : null}
+      <div
+        id="body-container"
+        className={clsx(styles["app"], !lin ? styles["app-anon"] : null)}
+      >
+        <Routes>
+          {lin ? (
+            <>
+              <Route path="/home" element={<Homepage alerts={addAlert} />} />
+              <Route
+                path="/profile"
+                element={<Navigate to={`/profile/${uid}`} />}
+              />
+              <Route
+                path="/profile/:uid"
+                element={<ProfilePage uid={uid} addAlerts={addAlert} />}
+              />
+              <Route path="/login" element={<Navigate to="/home" />} />
+              <Route path="/post/:pid" element={<PostPage />} />
+            </>
+          ) : (
             <Route
-              path="/profile"
-              element={<Navigate to={`/profile/${uid}`} />}
+              path="/login"
+              element={<LoginPage login={setLoggedIn} alerts={addAlert} />}
             />
-            <Route
-              path="/profile/:uid"
-              element={<ProfilePage uid={uid} alerts={addAlert} />}
-            />
-            <Route path="/login" element={<Navigate to="/home" />} />
-          </>
-        ) : (
-          <Route
-            path="/login"
-            element={<LoginPage login={setLoggedIn} alerts={addAlert} />}
-          />
-        )}
+          )}
 
-        {loggedIn === "" ? (
-          <Route path="/*" element={<Navigate to="/login" />} />
-        ) : null}
-      </Routes>
-      <Footer />
+          {shk === "" ? (
+            <Route path="/*" element={<Navigate to="/login" />} />
+          ) : null}
+        </Routes>
+        {lin ? <Footer /> : null}
+      </div>
       <Alerts />
     </Router>
   );

@@ -1,0 +1,17 @@
+@use "../libs/styles/lib/variables";
+
+.app {
+  height: calc(100vh - 80px);
+  width: calc(100vw);
+  overflow-y: scroll;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  z-index: 2;
+
+  &-anon {
+    height: 100vh;
+    justify-content: center;
+  }
+}
