@@ -13,5 +13,5 @@ export type profileProps =
 
 export type profilePageProps = {
   uid: number;
-  alerts: ({ type, content }: alertProps) => void;
+  addAlerts: ({ type, content }: alertProps) => void;
 };

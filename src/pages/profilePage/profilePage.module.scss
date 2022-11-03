@@ -1,0 +1,151 @@
+@use "../../libs/styles/lib/variables";
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+.profile {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: calc(35rem + 20vw);
+    gap: 1.3rem;
+    background: variables.$color-background-dp1;
+    border-radius: variables.$border-radius-l;
+    padding: variables.$padding-l;
+  }
+
+  &__identity {
+    display: flex;
+    flex-direction: row;
+    gap: 1.3rem;
+  }
+
+  &__username {
+    font-family: "Poppins", sans-serif;
+    font-size: 2em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px variables.$color-primary;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    padding-left: .5rem;
+  }
+
+  &__bio {
+    white-space: pre-wrap;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.3rem;
+  }
+
+  &__button {
+    border: 1px solid;
+    border-radius: variables.$border-radius-s;
+    padding: variables.$padding-xs;
+    text-align: center;
+    width: fit-content;
+    user-select: none;
+    cursor: pointer;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &-edit {
+      border-color: variables.$color-secondary;
+      color: variables.$color-secondary;
+      &:hover {
+        background-color: #e2611c21;
+      }
+    }
+
+    &-cancel {
+      border-color: variables.$font-color-sub;
+      color: variables.$font-color-sub;
+      &:hover {
+        background-color: #80808021;
+      }
+    }
+
+    &-submit {
+      border-color: variables.$color-primary;
+      color: variables.$color-primary;
+      &:hover {
+        background-color: #bb86fc21;
+      }
+    }
+
+    &-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 1.3rem;
+    }
+  }
+
+  &__infoCard {
+    background: variables.$color-background-dp2;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: variables.$padding-s;
+    padding-top: .5rem;
+    border-radius: variables.$border-radius-s;
+    flex-grow: 1;
+
+    &-title {
+      color: variables.$font-color-sub;
+      font-size: small;
+    }
+  }
+
+  &__form {
+    &-username {
+      font-family: inherit;
+      font-size: inherit;
+      height: fit-content;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      color: white;
+      outline: none;
+      word-wrap: break-word;
+      resize: none;
+      overflow: hidden;
+    }
+
+    &-bio {
+      font-family: inherit;
+      font-size: inherit;
+      min-height: 10rem;
+      max-height: 70vh;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      color: white;
+      outline: none;
+      word-wrap: break-word;
+      resize: vertical;
+    }
+
+    &-drop {
+      font-family: inherit;
+      font-size: inherit;
+      min-height: auto;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      color: white;
+      outline: none;
+      word-wrap: break-word;
+      resize: vertical;
+    }
+  }
+
+  &__counter {
+    width: 100%;
+    text-align: end;
+    color: #808080;
+    font-size: .75rem;
+    padding-bottom: 2px;
+  }
+}
