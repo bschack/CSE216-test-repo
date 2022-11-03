@@ -7,5 +7,11 @@ export type postCardProps = {
   likes: number;
   username?: string;
   title?: string;
-  date?: Date;
+  date?: string;
+  userId: number;
+  dislikes?: number;
+  comments?: number;
+  vote?: string;
+  updated: boolean;
+  postPage?: boolean;
 };

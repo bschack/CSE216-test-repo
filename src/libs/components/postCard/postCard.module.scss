@@ -18,6 +18,10 @@
       #121212;
     border-radius: variables.$border-radius-l;
     flex-grow: 1;
+
+    &-pp {
+      width: calc(40rem + 3vw);
+    }
   }
 
   &__header {
@@ -33,6 +37,7 @@
       font-style: normal;
       font-weight: 500;
       font-size: 1rem;
+      text-decoration: none;
     }
   }
   &__menu {
@@ -106,6 +111,7 @@
     font-weight: 400;
     font-size: .9rem;
     line-height: 1.2rem;
+    white-space: pre-wrap;
   }
 }
 
