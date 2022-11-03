@@ -1,9 +1,28 @@
 export const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 export const BACKEND_URL =
-  process.env.NODE_ENV === "development"
+  process.env.REACT_APP_NODE_ENV === "development"
     ? process.env.REACT_APP_LOCAL_BACKEND_URL
-    : process.env.REACT_APP_BACKEND_URL;
+    : process.env.REACT_APP_BACKEND_URL as string;
+
+export const genders = [
+  "Male",
+  "Female",
+  "Trans Man",
+  "Trans Woman",
+  "Genderqueer",
+  "Nonconforming",
+  "Other"
+];
+
+export const orientations = [
+  "Heterosexual",
+  "Homosexual",
+  "Bisexual",
+  "Queer",
+  "Pansexual",
+  "Other"
+];
 
 type postCardProps = {
   id: number;
