@@ -1,0 +1,36 @@
+@use "../../styles/lib/variables";
+
+.tooltip {
+  position: relative;
+
+  &__show {
+    position: absolute;
+    display: none;
+    background: variables.$color-background-dp24;
+    padding: variables.$padding-s;
+    z-index: 10;
+    border-radius: variables.$border-radius-s;
+    letter-spacing: .05em;
+    font-size: smaller;
+    box-sizing: border-box;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    color: variables.$font-color-light;
+    width: max-content;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &-bottom {
+      top: calc(100% + 1em);
+    }
+
+    &-top {
+      bottom: calc(100% + 1em);
+    }
+  }
+
+  &:hover > &__show {
+    display: block;
+    opacity: 1;
+    animation: variables.$appear-animation;
+  }
+}
