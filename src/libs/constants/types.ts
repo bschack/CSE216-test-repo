@@ -15,3 +15,36 @@ export type googleUserType = {
   picture: string;
   sub: string;
 };
+
+export type postProps = {
+  postId: number;
+  username: string;
+  content: string;
+  date: string;
+  userId: number;
+  likes: number;
+  dislikes: number;
+  comments: number;
+  vote: string;
+};
+
+export type profileProps =
+  | {
+      uid: number;
+      gi: string;
+      so: string;
+      bio: string;
+      email: string;
+      username: string;
+    }
+  | undefined;
+
+export type commentProps = {
+  content: string;
+  commentId: number;
+  postId: number;
+  userId: number;
+  date: string;
+  edited: boolean;
+  username: string;
+};
