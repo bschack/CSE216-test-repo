@@ -13,7 +13,7 @@ import { alertProps } from "../libs/constants/constants";
 import { AlertBox } from "../libs/components/alert/alert";
 import { ProfilePage } from "./profilePage/profilePage";
 import { NavBar } from "../libs/content/navBar/navBar";
-import styles from "./app.module.scss";
+import styles from "../libs/styles/lib/app.module.scss";
 import clsx from "clsx";
 import { PostPage } from "./postPage/postPage";
 
