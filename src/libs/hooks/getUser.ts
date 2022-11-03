@@ -1,6 +1,6 @@
 import { BACKEND_URL } from "../constants/constants";
 
-export const getUser = async (uid: number) => {
+export const getUser = async (uid: number | string) => {
   let profileData;
 
   await fetch(`${BACKEND_URL}/users/${uid}`, {
