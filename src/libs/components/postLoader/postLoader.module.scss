@@ -1,9 +1,17 @@
 @use "../../styles/lib/variables";
 
 .post-loader {
-  height: 2rem;
-  width: 2rem;
   animation: variables.$rotate-animation;
+
+  &-s {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &-l {
+    height: 5rem;
+    width: 5rem;
+  }
 
   &__spinner {
     position: absolute;
@@ -18,7 +26,6 @@
     width: 80%;
     height: 80%;
     background: variables.$color-background-dp2;
-    position: absolute;
     position: absolute;
     top: 10%;
     left: 10%;
