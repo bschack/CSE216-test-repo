@@ -8,6 +8,7 @@
     flex-direction: column;
     left: 3rem;
     gap: .5rem;
+    z-index: 5;
   }
 
   &__body {
@@ -23,6 +24,10 @@
 
     &:hover {
       animation-play-state: paused;
+    }
+
+    &-hide {
+      display: none;
     }
 
     &-error {

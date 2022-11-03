@@ -2,16 +2,20 @@ import { alertProps } from "./alert.types";
 
 import styles from "./alert.module.scss";
 import clsx from "clsx";
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
 
 const Alert = ({ type, content }: alertProps) => {
+  const [show, setShow] = useState<boolean>(true);
   const alertType = type.toLowerCase();
+
+  setTimeout(() => setShow(false), 6000);
 
   return (
     <div
       className={clsx(
         styles[`alert__body-${alertType}`],
-        styles["alert__body"]
+        styles["alert__body"],
+        !show ? styles["alert__body-hide"] : null
       )}
     >
       <div className={styles["alert__type"]}>{type}</div>
@@ -30,15 +34,11 @@ export const AlertBox = (
       type: type,
       content: content
     };
-    if (alerts.length > 2) {
+    if (aList.length > 2) {
       aList.shift();
     }
     aList.push(alert);
     setAlerts(aList);
-    setTimeout(() => {
-      aList.shift();
-      setAlerts(aList);
-    }, 6000);
   };
 
   const Alerts = () =>
