@@ -6,26 +6,24 @@ import "@testing-library/jest-dom";
 import { statsBarProps } from "./statsBar.types";
 
 const post: statsBarProps = {
-  type: "post",
+  postPage: faker.datatype.boolean(),
   id: 1,
+  userId: 1,
   likes: faker.datatype.number({ min: 1_000_000 }),
-  liked: faker.datatype.boolean(),
   dislikes: faker.datatype.number({ min: 1_000, max: 999_999 }),
-  disliked: faker.datatype.boolean(),
   comments: faker.datatype.number({ min: 0, max: 999 }),
-  commented: faker.datatype.boolean()
+  updated: false
 };
 describe("Stats Bar Numbers", () => {
   render(
     <StatsBar
-      type={post.type}
+      postPage={post.postPage}
       id={post.id}
+      userId={post.userId}
       likes={post.likes}
-      liked={post.liked}
       dislikes={post.dislikes}
-      disliked={post.disliked}
       comments={post.comments}
-      commented={post.commented}
+      updated={post.updated}
     />
   );
 

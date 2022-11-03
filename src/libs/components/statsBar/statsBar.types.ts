@@ -1,10 +1,10 @@
 export type statsBarProps = {
-  type: "post" | "comment";
+  postPage: boolean;
   id: number;
+  userId: number;
   likes?: number;
   dislikes?: number;
   comments?: number;
-  liked?: boolean;
-  disliked?: boolean;
-  commented?: boolean;
+  vote?: string;
+  updated: boolean;
 };

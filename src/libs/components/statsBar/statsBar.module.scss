@@ -4,8 +4,15 @@
   &__body {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 12rem;
+    gap: 1.3rem;
+
+    &:hover > div {
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   &__module {
@@ -17,27 +24,76 @@
     font-size: .8rem;
     font-weight: 400;
     border-radius: variables.$border-radius-xs;
-    padding: 3px 5px;
+    padding: variables.$padding-xs;
     user-select: none;
     background: variables.$color-background-dp2;
+    transition: .6s cubic-bezier(.31, .31, .31, 1);
 
     &:hover {
       background: variables.$color-background-dp6;
     }
 
-    &-commented > path,
-    &-comment:hover > svg > path {
-      fill: variables.$color-blue;
+    &-comment:hover > svg,
+    &-commented > svg {
+      color: variables.$color-blue;
     }
 
-    &-liked > path,
-    &-like:hover > svg > path {
-      fill: variables.$color-green;
+    &-liked > svg,
+    &-like:hover > svg {
+      color: variables.$color-green;
     }
 
-    &-disliked > path,
-    &-dislike:hover > svg > path {
-      fill: variables.$color-red;
+    &-disliked > svg,
+    &-dislike:hover > svg {
+      color: variables.$color-red;
     }
+  }
+}
+
+$d: 4px;
+$rand-dist: .2rem;
+
+.explosion {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+.particle {
+  position: absolute;
+  width: $d;
+  height: $d;
+  animation: shoot 2s cubic-bezier(.16, .36, .31, 1);
+  animation-name: shoot, fade;
+  z-index: 15;
+  opacity: 0;
+  border-radius: 100%;
+
+  @for $i from 0 to 30 {
+    &:nth-child(#{$i + 1}) {
+      transform: translate(
+         (random(50) - 26) * $rand-dist,
+         (random(50) - 26) * $rand-dist
+      );
+      background: hsl(random(360), 100%, 65%);
+      animation-delay: -.01*random(20)*1s;
+    }
+  }
+}
+
+@keyframes shoot {
+  from {
+    top: 50%;
+    transform: translate(-1rem, -50%);
+    // transform: translate(random(100)*1vw, random(100)*1vh);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .9;
+  }
+  to {
+    opacity: 0;
   }
 }
