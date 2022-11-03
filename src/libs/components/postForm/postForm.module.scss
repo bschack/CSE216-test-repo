@@ -50,19 +50,72 @@
   }
 
   &__submit {
+    border: 1px solid;
+    border-radius: variables.$border-radius-s;
+    padding: variables.$padding-xs;
+    display: flex;
+    flex-direction: row;
+    gap: .3rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    user-select: none;
+    cursor: pointer;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-color: variables.$color-primary;
+    color: variables.$color-primary;
+
+    &:hover {
+      background-color: #bb86fc21;
+    }
+
+    &-disabled {
+      opacity: 0.7;
+    }
+
+    & > svg {
+      display: none;
+      transition: 2s cubic-bezier(.31, .31, .31, 1);
+    }
+
+    &:hover:not(&-disabled) > svg {
+      display: block;
+    }
+
+    &-failed {
+      animation: variables.$shake-animation;
+    }
+  }
+
+  &__submit1 {
+    display: flex;
+    flex-direction: row;
+    gap: .3rem;
+    justify-content: center;
+    align-items: center;
     font-size: inherit;
     font-weight: 550;
     background-color: #bb86fc;
     color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     padding: .5rem 1rem;
     border-radius: 1.3rem;
     border: none;
     user-select: none;
     cursor: pointer;
+
+    &-disabled {
+      opacity: 0.7;
+    }
+
+    & > svg {
+      display: none;
+      transition: 2s cubic-bezier(.31, .31, .31, 1);
+    }
+
+    &:hover:not(&-disabled) > svg {
+      display: block;
+    }
 
     &-failed {
       animation: variables.$shake-animation;

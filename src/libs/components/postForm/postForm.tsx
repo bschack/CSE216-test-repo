@@ -1,13 +1,15 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { postFailedAlert, postSuccessAlert } from "../../constants/constants";
-import { createPost } from "../../hooks/createPost";
+import { createNewPost } from "../../hooks/createNewPost";
 import { PostLoader } from "../postLoader/postLoader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./postForm.module.scss";
 import { postFormProps } from "./postForm.types";
 
-export const PostForm = ({ alerts }: postFormProps) => {
+export const PostForm = ({ alerts, disabled }: postFormProps) => {
   const [message, setMessage] = useState("");
   const [focus, setFocus] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -26,7 +28,7 @@ export const PostForm = ({ alerts }: postFormProps) => {
     }, 820);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     setLoading(true);
     e.preventDefault();
     e.stopPropagation();
@@ -37,19 +39,18 @@ export const PostForm = ({ alerts }: postFormProps) => {
       return;
     }
 
-    setTimeout(() => {
-      const success = createPost();
-      setLoading(false);
-
-      if (success) {
+    await createNewPost(message)
+      .then(() => {
+        setLoading(false);
         setMessage("");
         setFocus(false);
         alerts(postSuccessAlert);
-      } else {
+      })
+      .catch((err) => {
         alerts(postFailedAlert);
         postFailed();
-      }
-    }, 1500);
+        console.warn(err);
+      });
   };
 
   const postCheck = message.replace(/\s/g, "").length;
@@ -71,7 +72,7 @@ export const PostForm = ({ alerts }: postFormProps) => {
           onBlur={() => {
             if (!message.length) setFocus(false);
           }}
-          disabled={loading}
+          disabled={loading || disabled}
           onKeyDownCapture={(e) => {
             if (e.key === "Enter" && !e.shiftKey) handleSubmit(e);
           }}
@@ -83,16 +84,18 @@ export const PostForm = ({ alerts }: postFormProps) => {
           )}
         >{`${message.length}/1024`}</div>
         {!loading ? (
-          <input
-            type="submit"
-            value="Post"
+          <div
             className={clsx(
               styles["post-form__submit"],
-              failed ? styles["post-form__submit-failed"] : null
+              failed ? styles["post-form__submit-failed"] : null,
+              !postCheck ? styles["post-form__submit-disabled"] : null
             )}
-            disabled={!postCheck}
-            onClick={handleSubmit}
-          />
+            onClick={(e) => {
+              if (postCheck) handleSubmit(e);
+            }}
+          >
+            Post <FontAwesomeIcon icon={faPaperPlane} />
+          </div>
         ) : (
           <PostLoader />
         )}
