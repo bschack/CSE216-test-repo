@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(60rem + 10vw);
+    width: calc(45rem + 20vw);
     gap: 1.3rem;
 
     &-posts {
@@ -18,6 +18,6 @@
   }
 
   &-space {
-    margin: 4rem 0px;
+    margin: 7vh 0px;
   }
 }

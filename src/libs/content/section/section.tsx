@@ -5,13 +5,15 @@ import { sectionProps } from "./section.types";
 export const Section = ({
   children,
   space = false,
-  posts = false
+  posts = false,
+  className
 }: sectionProps) => {
   return (
     <div
       className={clsx(
         styles["section"],
-        space ? styles["section-space"] : null
+        space ? styles["section-space"] : null,
+        className
       )}
     >
       <div
