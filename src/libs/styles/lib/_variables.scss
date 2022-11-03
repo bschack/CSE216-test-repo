@@ -17,6 +17,12 @@ $color-background-dp2: linear-gradient(
   $color-background;
 $color-background-dp6: linear-gradient(
     0deg,
+    rgba(255, 255, 255, 0.11),
+    rgba(255, 255, 255, 0.11)
+  ),
+  $color-background;
+$color-background-dp6: linear-gradient(
+    0deg,
     rgba(255, 255, 255, 0.12),
     rgba(255, 255, 255, 0.12)
   ),
@@ -39,6 +45,16 @@ $color-secondary: #e2601c;
 $color-blue: #3459c8;
 $color-red: #ae0000;
 $color-green: #41c141;
+$color-violet: rgb(103, 58, 183);
+$color-pink: rgb(100, 183, 242);
+
+$gradient-background-purple: linear-gradient(
+  to right,
+  $color-primary,
+  $color-violet,
+  $color-pink,
+  $color-primary
+);
 
 //borders
 $border-radius-xs: .3rem;
@@ -47,14 +63,58 @@ $border-radius-m: 1rem;
 $border-radius-l: 1.3rem;
 
 //padding
+$padding-xs: 0.3rem 0.7rem;
+$padding-s: 0.7rem;
 $padding-m: 1.2rem;
 $padding-l: 1.6rem;
 $padding-xl: calc(1.425rem + 2.1vw) calc(1.325rem + 0.9vw);
 
+// gap
+$gap-m: 1.3em;
+
+// space
+$space-xs: .2em;
+$space-s: .5em;
+$space-m: 1em;
+
 // animations
 
+$spin-animation: spin 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+$slide-animation: slide 1s ease;
+
+@keyframes slide {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55.8672px;
+  }
+}
+
+$background-pan: background-pan 10s linear infinite;
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
 /* Floating */
-$float-animation: floating 4s ease-in-out infinite;
+$float-animation: floating 3s ease-in-out infinite;
 
 @keyframes floating {
   0% {
@@ -104,5 +164,19 @@ $rotate-animation: rotate 1.2s linear forwards infinite;
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+$appear-animation: appear 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
