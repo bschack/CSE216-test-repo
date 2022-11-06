@@ -26,6 +26,13 @@ body {
   color: variables.$font-color-light;
 }
 
+:root {
+  --background-color: #fff;
+  --cc: #000;
+  --font: #000;
+  --shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
 a {
   text-decoration: none;
 }

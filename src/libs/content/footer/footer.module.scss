@@ -5,6 +5,7 @@
     padding: variables.$padding-xl;
     background: variables.$color-background-dp1;
     color: variables.$font-color-sub;
+    box-shadow: variables.$shadow;
     margin-top: auto;
 
     & > hr {
@@ -48,6 +49,46 @@
 
       & > span {
         font-weight: 500;
+      }
+    }
+  }
+
+  &__theme {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+      outline: 0;
+    }
+
+    height: 32px;
+    width: 52px;
+    border-radius: 16px;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    border: 2px solid variables.$font-color-sub;
+    background: variables.$color-background-dp1;
+    transition: all .2s ease;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: variables.$color-primary;
+      box-shadow: 0 1px 2px rgba(44, 44, 44, .2);
+      transition: all .2s cubic-bezier(.5, .1, .75, 1.35);
+    }
+    &:checked {
+      &:after {
+        transform: translatex(20px);
       }
     }
   }

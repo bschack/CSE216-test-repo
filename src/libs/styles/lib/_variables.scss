@@ -2,40 +2,42 @@
 $font-primary: "Graphik", sans-serif;
 
 // background colors and depths
-$color-background: #121212;
+$color-background: var(--background-color); //#121212;
+$cc: var(--cc);
+
 $color-background-dp1: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.05)
+    rgba($cc, $cc, $cc, 0.05),
+    rgba($cc, $cc, $cc, 0.05)
   ),
   $color-background;
 $color-background-dp2: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.07),
-    rgba(255, 255, 255, 0.07)
+    rgba($cc, $cc, $cc, 0.07),
+    rgba($cc, $cc, $cc, 0.07)
   ),
   $color-background;
 $color-background-dp6: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.11),
-    rgba(255, 255, 255, 0.11)
+    rgba($cc, $cc, $cc, 0.11),
+    rgba($cc, $cc, $cc, 0.11)
   ),
   $color-background;
 $color-background-dp6: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.12)
+    rgba($cc, $cc, $cc, 0.12),
+    rgba($cc, $cc, $cc, 0.12)
   ),
   $color-background;
 $color-background-dp24: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.16),
-    rgba(255, 255, 255, 0.16)
+    rgba($cc, $cc, $cc, 0.16),
+    rgba($cc, $cc, $cc, 0.16)
   ),
   $color-background;
 
 // font colors
-$font-color-light: #ffffff;
+$font-color-light: var(--font);
 $font-color-dark: #000000;
 $font-color-sub: #808080;
 
@@ -76,6 +78,9 @@ $gap-m: 1.3em;
 $space-xs: .2em;
 $space-s: .5em;
 $space-m: 1em;
+
+// shadow
+$shadow: var(--shadow);
 
 // animations
 

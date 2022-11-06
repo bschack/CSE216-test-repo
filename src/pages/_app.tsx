@@ -16,12 +16,14 @@ import { NavBar } from "../libs/content/navBar/navBar";
 import styles from "../libs/styles/lib/app.module.scss";
 import clsx from "clsx";
 import { PostPage } from "./postPage/postPage";
+import { changeTheme } from "../libs/styles/lib/changeTheme";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState<string>("");
   // const uuid = user?.email.split("@")[0];
   const shk = window.sessionStorage.getItem("shk") || "";
   const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
+  const theme = window.localStorage.getItem("theme");
 
   const [alertsList, setAlertsList] = useState<alertProps[]>([]);
   const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
@@ -29,12 +31,17 @@ const App = () => {
   const lin = loggedIn !== "";
 
   useEffect(() => {
+    if (!theme) {
+      window.localStorage.setItem("theme", "dark");
+    } else {
+      changeTheme(theme);
+    }
     if (shk !== "") {
       setLoggedIn(shk);
     } else {
       setLoggedIn("");
     }
-  }, [addAlert, shk]);
+  }, [addAlert, shk, theme]);
 
   return (
     <Router>

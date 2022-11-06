@@ -72,7 +72,7 @@ export const PostForm = ({ alerts, disabled }: postFormProps) => {
           onBlur={() => {
             if (!message.length) setFocus(false);
           }}
-          disabled={loading || disabled}
+          disabled={loading /*|| disabled*/}
           onKeyDownCapture={(e) => {
             if (e.key === "Enter" && !e.shiftKey) handleSubmit(e);
           }}

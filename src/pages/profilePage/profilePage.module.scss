@@ -10,6 +10,7 @@
     background: variables.$color-background-dp1;
     border-radius: variables.$border-radius-l;
     padding: variables.$padding-l;
+    box-shadow: variables.$shadow;
   }
 
   &__identity {
@@ -91,6 +92,7 @@
     padding-top: .5rem;
     border-radius: variables.$border-radius-s;
     flex-grow: 1;
+    box-shadow: inset variables.$shadow;
 
     &-title {
       color: variables.$font-color-sub;
@@ -106,7 +108,7 @@
       width: 100%;
       border: none;
       background-color: transparent;
-      color: white;
+      color: variables.$font-color-light;
       outline: none;
       word-wrap: break-word;
       resize: none;
@@ -121,7 +123,7 @@
       width: 100%;
       border: none;
       background-color: transparent;
-      color: white;
+      color: variables.$font-color-light;
       outline: none;
       word-wrap: break-word;
       resize: vertical;
@@ -134,7 +136,7 @@
       width: 100%;
       border: none;
       background-color: transparent;
-      color: white;
+      color: variables.$font-color-light;
       outline: none;
       word-wrap: break-word;
       resize: vertical;
