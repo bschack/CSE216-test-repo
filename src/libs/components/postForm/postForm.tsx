@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { postFailedAlert, postSuccessAlert } from "../../constants/constants";
-import { createNewPost } from "../../hooks/createNewPost";
+import { createNewPost } from "../../api/createNewPost";
 import { PostLoader } from "../postLoader/postLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";

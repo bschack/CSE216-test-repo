@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { editComment } from "../../hooks/editComment";
+import { editComment } from "../../api/editComment";
 import { formatDate } from "../../utils/formatter";
 import { Tooltip } from "../tooltip/tooltip";
 import { commentCardProps } from "./commentCard.types";

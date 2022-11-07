@@ -3,7 +3,7 @@ import { PostCard } from "../../libs/components/postCard/postCard";
 import { PostForm } from "../../libs/components/postForm/postForm";
 import { postProps } from "../../libs/constants/types";
 import { Section } from "../../libs/content/section/section";
-import { getAllPosts } from "../../libs/hooks/getAllPosts";
+import { getAllPosts } from "../../libs/api/getAllPosts";
 import { homepageProps } from "./homepage.types";
 import { LoadingCard } from "../../libs/components/loadingCard/loadingCard";
 import { Header } from "../../libs/components/header/header";

@@ -7,7 +7,7 @@ import { LoadingCard } from "../../libs/components/loadingCard/loadingCard";
 import { PostCard } from "../../libs/components/postCard/postCard";
 import { commentProps, postProps } from "../../libs/constants/types";
 import { Section } from "../../libs/content/section/section";
-import { getPost } from "../../libs/hooks/getPost";
+import { getPost } from "../../libs/api/getPost";
 
 const PostPage = () => {
   const [loaded, setLoaded] = useState<boolean>(false);

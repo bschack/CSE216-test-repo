@@ -4,7 +4,7 @@ import {
   loginFailedAlert,
   loginSuccessAlert
 } from "../../libs/constants/constants";
-import { loginUser } from "../../libs/hooks/loginUser";
+import { loginUser } from "../../libs/api/loginUser";
 import { LoginPageProps, sessionProps } from "./loginPage.types";
 
 import styles from "./loginPage.module.scss";

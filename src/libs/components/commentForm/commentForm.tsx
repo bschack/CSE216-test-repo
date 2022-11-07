@@ -3,7 +3,7 @@ import { PostLoader } from "../postLoader/postLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { postFormProps } from "./commentForm.types";
-import { createNewComment } from "../../hooks/createNewComment";
+import { createNewComment } from "../../api/createNewComment";
 
 import styles from "./commentForm.module.scss";
 import clsx from "clsx";

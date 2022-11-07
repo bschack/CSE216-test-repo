@@ -1,6 +1,6 @@
 import { statsBarProps } from "./statsBar.types";
 import { formatNumber } from "../../utils/formatter";
-import { userVote } from "../../hooks/userVote";
+import { userVote } from "../../api/userVote";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
