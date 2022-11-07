@@ -13,9 +13,9 @@ const PostPage = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [qed, setQed] = useState<boolean>(false);
   const [data, setData] = useState<any>();
+
   const params = useParams();
   const targetPid = parseInt(params.pid || "-1");
-
   const post: postProps = data?.post;
   const comments: commentProps[] = data?.comments!;
 

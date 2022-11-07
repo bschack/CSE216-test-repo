@@ -13,7 +13,6 @@ import styles from "./profilePage.module.scss";
 import clsx from "clsx";
 
 const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
-  const navigate = useNavigate();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [editing, setEditing] = useState<boolean>(false);
   const [user, setUser] = useState<profileProps>();
@@ -21,11 +20,11 @@ const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
   const [gender, setGender] = useState("");
   const [sexuality, setSexuality] = useState("");
   const [biography, setBiography] = useState("");
+
+  const navigate = useNavigate();
   const params = useParams();
   const targetUid = parseInt(params.uid || "-1");
-
   const isMe = user?.uid === uid;
-
   const canEdit = user?.uid === uid && !editing;
 
   const doEdit = () => {

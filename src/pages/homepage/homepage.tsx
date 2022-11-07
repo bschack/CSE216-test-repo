@@ -18,7 +18,6 @@ const Homepage = ({ alerts }: homepageProps) => {
   const [displayed, setDisplayed] = useState<number>(15);
 
   const posts: postProps[] = postData?.Data;
-
   const totalPostLength: number = postData?.Data.length;
   const newPostLength = totalPostLength - dataLength;
   const newPost = newPostLength > 0;

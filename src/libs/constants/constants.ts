@@ -1,9 +1,11 @@
-export const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+export const GOOGLE_CLIENT_ID =
+  process.env.REACT_APP_GOOGLE_CLIENT_ID ||
+  "695813219949-5s8n15hvcvcj7vh0955i19t21qloh3ur.apps.googleusercontent.com";
 
 export const BACKEND_URL =
   process.env.REACT_APP_NODE_ENV === "development"
     ? process.env.REACT_APP_LOCAL_BACKEND_URL
-    : process.env.REACT_APP_BACKEND_URL as string;
+    : "https://frozen-lowlands-54266.herokuapp.com";
 
 export const genders = [
   "Male",

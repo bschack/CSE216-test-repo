@@ -10,16 +10,16 @@ import clsx from "clsx";
 
 export const CommentCard = ({ comment }: commentCardProps) => {
   const [editing, setEditing] = useState<boolean>(false);
+
+  const message = comment?.content;
+  const [newMessage, setNewMessage] = useState<string>(message);
+
+  const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
   const userId = comment?.userId;
   const username = comment?.username;
-  const message = comment?.content;
   const date = comment?.date!;
   const edited = comment?.edited;
   const commentId = comment.commentId;
-
-  const [newMessage, setNewMessage] = useState<string>(message);
-  const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
-
   const canEdit = !editing && uid === userId;
 
   const edit = () => {
