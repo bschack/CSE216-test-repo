@@ -121,7 +121,7 @@ export const StatsBar = ({
         </div>
       </Tooltip>
       {!postPage ? (
-        <Link to={`/post/${id}`}>
+        <Link to={`/posts/${id}`}>
           <Tooltip tip="View Comments">
             <div
               className={clsx(

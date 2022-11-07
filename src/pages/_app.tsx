@@ -62,19 +62,18 @@ const App = () => {
                 path="/profile/:uid"
                 element={<ProfilePage uid={uid} addAlerts={addAlert} />}
               />
-              <Route path="/login" element={<Navigate to="/home" />} />
-              <Route path="/post/:pid" element={<PostPage />} />
+              <Route path="/posts/:pid" element={<PostPage />} />
+              <Route path="*" element={<Navigate to="/home" />} />
             </>
           ) : (
-            <Route
-              path="/login"
-              element={<LoginPage login={setLoggedIn} alerts={addAlert} />}
-            />
+            <>
+              <Route
+                path="/login"
+                element={<LoginPage login={setLoggedIn} alerts={addAlert} />}
+              />
+              <Route path="/*" element={<Navigate to="/login" />} />
+            </>
           )}
-
-          {shk === "" ? (
-            <Route path="/*" element={<Navigate to="/login" />} />
-          ) : null}
         </Routes>
         {lin ? <Footer /> : null}
       </div>
