@@ -4,12 +4,13 @@ import { genders, orientations, userDNE } from "../../libs/constants/constants";
 import { Section } from "../../libs/content/section/section";
 import { getUser } from "../../libs/hooks/getUser";
 import { profilePageProps, profileProps } from "./profilePage.types";
-
-import styles from "./profilePage.module.scss";
-import clsx from "clsx";
 import { editProfile } from "../../libs/hooks/editUser";
 import { LoadingCard } from "../../libs/components/loadingCard/loadingCard";
 import { Header } from "../../libs/components/header/header";
+import { Tooltip } from "../../libs/components/tooltip/tooltip";
+
+import styles from "./profilePage.module.scss";
+import clsx from "clsx";
 
 export const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
   const navigate = useNavigate();
@@ -144,7 +145,14 @@ export const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
         <form className={styles["profile__container"]}>
           <div className={styles["profile__actions"]}>
             <label className={styles["profile__infoCard"]}>
-              <div className={styles["profile__infoCard-title"]}>Username</div>
+              <div className={styles["profile__infoCard-title"]}>
+                <Tooltip
+                  tip="This will be displayed on all your posts"
+                  direction="top"
+                >
+                  Username
+                </Tooltip>
+              </div>
               <input
                 type="text"
                 name="username"
@@ -158,7 +166,12 @@ export const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
             </label>
             <label className={styles["profile__infoCard"]}>
               <div className={styles["profile__infoCard-title"]}>
-                Gender Identity
+                <Tooltip
+                  tip="This will not be visible to other people"
+                  direction="top"
+                >
+                  Gender Identity
+                </Tooltip>
               </div>
               <select
                 value={gender}
@@ -173,7 +186,12 @@ export const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
             </label>
             <label className={styles["profile__infoCard"]}>
               <div className={styles["profile__infoCard-title"]}>
-                Sexual Orientation
+                <Tooltip
+                  tip="This will not be visible to other people"
+                  direction="top"
+                >
+                  Sexual Orientation
+                </Tooltip>
               </div>
               <select
                 value={sexuality}
