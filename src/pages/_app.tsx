@@ -4,30 +4,30 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import { LoginPage } from "./loginPage/loginPage";
-import Homepage from "./homepage/homepage";
-import "../libs/styles/lib/globals.scss";
 import { Footer } from "../libs/content/footer/footer";
 import { useEffect, useState } from "react";
 import { alertProps } from "../libs/constants/constants";
 import { AlertBox } from "../libs/components/alert/alert";
-import { ProfilePage } from "./profilePage/profilePage";
 import { NavBar } from "../libs/content/navBar/navBar";
+import { changeTheme } from "../libs/styles/lib/changeTheme";
+
+import LoginPage from "./loginPage/loginPage";
+import Homepage from "./homepage/homepage";
+import ProfilePage from "./profilePage/profilePage";
+import PostPage from "./postPage/postPage";
+
+import "../libs/styles/lib/globals.scss";
 import styles from "../libs/styles/lib/app.module.scss";
 import clsx from "clsx";
-import { PostPage } from "./postPage/postPage";
-import { changeTheme } from "../libs/styles/lib/changeTheme";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState<string>("");
-  // const uuid = user?.email.split("@")[0];
-  const shk = window.sessionStorage.getItem("shk") || "";
-  const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
-  const theme = window.localStorage.getItem("theme");
-
   const [alertsList, setAlertsList] = useState<alertProps[]>([]);
   const { addAlert, Alerts } = AlertBox(alertsList, setAlertsList);
 
+  const shk = window.sessionStorage.getItem("shk") || "";
+  const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
+  const theme = window.localStorage.getItem("theme");
   const lin = loggedIn !== "";
 
   useEffect(() => {

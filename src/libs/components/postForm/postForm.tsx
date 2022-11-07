@@ -1,13 +1,13 @@
-import clsx from "clsx";
 import { useState } from "react";
 import { postFailedAlert, postSuccessAlert } from "../../constants/constants";
 import { createNewPost } from "../../hooks/createNewPost";
 import { PostLoader } from "../postLoader/postLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { postFormProps } from "./postForm.types";
 
 import styles from "./postForm.module.scss";
-import { postFormProps } from "./postForm.types";
+import clsx from "clsx";
 
 export const PostForm = ({ alerts, disabled }: postFormProps) => {
   const [message, setMessage] = useState("");

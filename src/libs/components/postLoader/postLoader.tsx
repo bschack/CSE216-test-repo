@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import styles from "./postLoader.module.scss";
 import { postLoaderProps } from "./postLoader.types";
+
+import styles from "./postLoader.module.scss";
+import clsx from "clsx";
 
 export const PostLoader = ({ size = "s" }: postLoaderProps) => {
   return (

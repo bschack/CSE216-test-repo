@@ -1,7 +1,5 @@
 import { statsBarProps } from "./statsBar.types";
-import styles from "./statsBar.module.scss";
 import { formatNumber } from "../../utils/formatter";
-import clsx from "clsx";
 import { userVote } from "../../hooks/userVote";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { Tooltip } from "../tooltip/tooltip";
+
+import styles from "./statsBar.module.scss";
+import clsx from "clsx";
 
 export const StatsBar = ({
   postPage,

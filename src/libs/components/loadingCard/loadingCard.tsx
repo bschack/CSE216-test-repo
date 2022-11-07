@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import styles from "./loadingCard.module.scss";
+import clsx from "clsx";
 
 export const LoadingCard = () => {
   return (

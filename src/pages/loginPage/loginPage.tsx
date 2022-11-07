@@ -10,7 +10,7 @@ import { LoginPageProps, sessionProps } from "./loginPage.types";
 import styles from "./loginPage.module.scss";
 import clsx from "clsx";
 
-export const LoginPage = ({ login, alerts }: LoginPageProps) => {
+const LoginPage = ({ login, alerts }: LoginPageProps) => {
   const [googleLogin, setGoogleLogin] = useState<boolean>(false);
 
   const handleCredentialResponse = async (res: any) => {
@@ -82,3 +82,5 @@ export const LoginPage = ({ login, alerts }: LoginPageProps) => {
     </main>
   );
 };
+
+export default LoginPage;

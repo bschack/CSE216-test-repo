@@ -1,11 +1,12 @@
-import clsx from "clsx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { editComment } from "../../hooks/editComment";
 import { formatDate } from "../../utils/formatter";
 import { Tooltip } from "../tooltip/tooltip";
-import styles from "./commentCard.module.scss";
 import { commentCardProps } from "./commentCard.types";
+
+import styles from "./commentCard.module.scss";
+import clsx from "clsx";
 
 export const CommentCard = ({ comment }: commentCardProps) => {
   const [editing, setEditing] = useState<boolean>(false);

@@ -1,11 +1,11 @@
 import { postCardProps } from "./postCard.types";
 import { formatDate } from "../../utils/formatter";
 import { StatsBar } from "../statsBar/statsBar";
+import { Link } from "react-router-dom";
+import { Tooltip } from "../tooltip/tooltip";
 
 import styles from "./postCard.module.scss";
-import { Link } from "react-router-dom";
 import clsx from "clsx";
-import { Tooltip } from "../tooltip/tooltip";
 
 export const PostCard = ({
   id,

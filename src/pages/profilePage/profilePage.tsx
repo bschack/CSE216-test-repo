@@ -12,7 +12,7 @@ import { Tooltip } from "../../libs/components/tooltip/tooltip";
 import styles from "./profilePage.module.scss";
 import clsx from "clsx";
 
-export const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
+const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [editing, setEditing] = useState<boolean>(false);
@@ -249,3 +249,5 @@ export const ProfilePage = ({ uid, addAlerts }: profilePageProps) => {
     </Section>
   );
 };
+
+export default ProfilePage;

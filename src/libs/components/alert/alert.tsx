@@ -1,8 +1,8 @@
 import { alertProps } from "./alert.types";
+import { SetStateAction, useState } from "react";
 
 import styles from "./alert.module.scss";
 import clsx from "clsx";
-import { SetStateAction, useState } from "react";
 
 const Alert = ({ type, content }: alertProps) => {
   const [show, setShow] = useState<boolean>(true);

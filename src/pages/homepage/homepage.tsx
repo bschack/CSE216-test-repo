@@ -5,9 +5,10 @@ import { postProps } from "../../libs/constants/types";
 import { Section } from "../../libs/content/section/section";
 import { getAllPosts } from "../../libs/hooks/getAllPosts";
 import { homepageProps } from "./homepage.types";
-import styles from "./homepage.module.scss";
 import { LoadingCard } from "../../libs/components/loadingCard/loadingCard";
 import { Header } from "../../libs/components/header/header";
+
+import styles from "./homepage.module.scss";
 
 const Homepage = ({ alerts }: homepageProps) => {
   const [postData, setPostData] = useState<any>();

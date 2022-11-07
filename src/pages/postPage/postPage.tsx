@@ -9,7 +9,7 @@ import { commentProps, postProps } from "../../libs/constants/types";
 import { Section } from "../../libs/content/section/section";
 import { getPost } from "../../libs/hooks/getPost";
 
-export const PostPage = () => {
+const PostPage = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [qed, setQed] = useState<boolean>(false);
   const [data, setData] = useState<any>();
@@ -80,3 +80,5 @@ export const PostPage = () => {
     </Section>
   );
 };
+
+export default PostPage;
