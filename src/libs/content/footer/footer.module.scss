@@ -58,7 +58,36 @@
     -moz-appearance: none;
     appearance: none;
     -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
+
+    &-changer {
+      height: min-content;
+      width: 3rem;
+      padding: 4px;
+      border: 2px solid variables.$font-color-sub;
+      border-radius: 99em;
+      display: flex;
+      cursor: pointer;
+
+      &-dark {
+        justify-content: flex-start;
+      }
+
+      &-light {
+        justify-content: flex-end;
+      }
+    }
+
+    &-moon {
+      color: variables.$color-primary;
+      font-size: 1.5rem;
+      animation: to-dark .2s cubic-bezier(.5, .1, .75, 1.35);
+    }
+
+    &-sun {
+      color: variables.$color-yellow;
+      font-size: 1.5rem;
+      animation: to-light .2s cubic-bezier(.5, .1, .75, 1.35);
+    }
 
     &:focus {
       outline: 0;
@@ -91,5 +120,23 @@
         transform: translatex(20px);
       }
     }
+  }
+}
+
+@keyframes to-light {
+  from {
+    transform: translateX(-1.5rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes to-dark {
+  from {
+    transform: translateX(1.5rem);
+  }
+  to {
+    transform: translateX(0);
   }
 }

@@ -1,4 +1,9 @@
+import { faMoon } from "@fortawesome/free-regular-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { Tooltip } from "../../components/tooltip/tooltip";
 import { changeTheme } from "../../styles/lib/changeTheme";
 import styles from "./footer.module.scss";
 
@@ -31,14 +36,33 @@ export const Footer = () => {
           <img src="/images/logo.png" alt="Blend Logo" />
           The place to combine ideas
         </div>
-        <div className={styles["footer__info-links"]}>
-          <input
+        <Tooltip tip="Change theme">
+          <div
+            className={clsx(
+              styles["footer__theme-changer"],
+              styles[`footer__theme-changer-${theme}`]
+            )}
+            onClick={toggleTheme}
+          >
+            {/*<input
             type="checkbox"
             className={styles["footer__theme"]}
             checked={!dark}
-            onClick={toggleTheme}
-          />
-        </div>
+            onChange={toggleTheme}
+  />*/}
+            {dark ? (
+              <FontAwesomeIcon
+                icon={faMoon}
+                className={styles["footer__theme-moon"]}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faSun}
+                className={styles["footer__theme-sun"]}
+              />
+            )}
+          </div>
+        </Tooltip>
       </div>
       <hr />
       <div className={styles["footer__rights"]}>
