@@ -3,6 +3,7 @@ import { formatDate } from "../../utils/formatter";
 import { StatsBar } from "../statsBar/statsBar";
 import { Link } from "react-router-dom";
 import { Tooltip } from "../tooltip/tooltip";
+import Linkify from "linkify-react";
 
 import styles from "./postCard.module.scss";
 import clsx from "clsx";
@@ -37,7 +38,9 @@ export const PostCard = ({
           </Link>
         </Tooltip>
       </div>
-      <div className={styles["post-card__content"]}>{message}</div>
+      <Linkify options={{ target: "_blank" }}>
+        <div className={styles["post-card__content"]}>{message}</div>
+      </Linkify>
       {date ? (
         <div className={styles["post-card__date"]}>{formatDate(date)}</div>
       ) : null}
