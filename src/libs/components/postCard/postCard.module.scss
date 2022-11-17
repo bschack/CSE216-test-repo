@@ -7,13 +7,14 @@
     align-items: flex-start;
     padding: variables.$padding-l;
     gap: 1.3rem;
-    max-width: calc(50rem + 20vw);
+    //max-width: calc(50rem + 20vw);
     height: fit-content;
 
     background: variables.$color-background-dp2;
     box-shadow: variables.$shadow;
     border-radius: variables.$border-radius-l;
-    flex-grow: 1;
+    //flex-grow: 1;
+    width: calc(100% - 3.2rem);
 
     &-pp {
       width: calc(40rem + 3vw);

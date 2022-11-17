@@ -1,0 +1,70 @@
+@use "../../styles/lib/variables";
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+
+  &__chosen {
+    color: variables.$color-green;
+  }
+
+  &__file {
+    &-input {
+      display: none;
+    }
+
+    &-submit {
+      padding: variables.$padding-xs;
+      border-radius: variables.$border-radius-s;
+      width: min-content;
+      user-select: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      margin-left: auto;
+      transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &:hover {
+        border: 1px solid variables.$color-primary;
+        color: variables.$color-primary;
+      }
+    }
+
+    &-button {
+      display: flex;
+      flex-direction: row;
+      gap: 0.7rem;
+      padding: variables.$padding-s;
+      border-radius: 10rem;
+      width: min-content;
+      align-items: center;
+      white-space: nowrap;
+      background: transparent;
+      user-select: none;
+      cursor: pointer;
+      transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &:hover {
+        background: variables.$color-background-dp6;
+      }
+    }
+
+    &-name {
+      &-container {
+        padding: variables.$padding-s;
+        background: variables.$color-background-dp6;
+        border-radius: variables.$border-radius-xs;
+      }
+
+      font-family: inherit;
+      font-size: inherit;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      color: variables.$font-color-light;
+      outline: none;
+      resize: none;
+    }
+  }
+}

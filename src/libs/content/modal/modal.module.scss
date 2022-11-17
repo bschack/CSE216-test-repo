@@ -1,0 +1,56 @@
+@use "../../styles/lib/variables";
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #12121288;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &__body {
+    background: variables.$color-background-dp2;
+    display: flex;
+    flex-direction: column;
+    //height: calc(12rem + 10vh);
+    min-width: calc(15rem + 12vw);
+    //aspect-ratio: 3/2;
+    padding: variables.$padding-l;
+    border-radius: variables.$border-radius-l;
+    justify-content: space-between;
+
+    &-close {
+      display: flex;
+      justify-content: flex-end;
+
+      & > svg {
+        position: absolute;
+        font-size: larger;
+        color: variables.$color-red;
+        cursor: pointer;
+        // transform: translateY(-.5rem) translateX(.5rem);
+
+        &:hover {
+          animation: variables.$rotate-animation;
+        }
+      }
+    }
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
