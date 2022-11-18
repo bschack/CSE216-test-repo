@@ -26,6 +26,7 @@ export const FileUpload = ({ closeModal, postId }: fileUploadProps) => {
       base64: base64
     };
     console.log(file);
+    console.log(base64);
     closeModal();
   };
 

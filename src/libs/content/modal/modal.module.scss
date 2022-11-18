@@ -22,10 +22,12 @@
     flex-direction: column;
     //height: calc(12rem + 10vh);
     min-width: calc(15rem + 12vw);
+    max-width: 80vw;
+    max-height: 75vh;
     //aspect-ratio: 3/2;
     padding: 1rem variables.$padding-l;
     border-radius: variables.$border-radius-l;
-    justify-content: space-between;
+    // justify-content: space-between;
 
     &-close {
       display: flex;

@@ -22,7 +22,7 @@ export const FileBar = ({ files = [], isMe, postId }: fileBarProps) => {
       {isMe ? (
         <Tooltip tip="Add File">
           <div onClick={upModalToggle} className={styles["file-bar__add"]}>
-            <FontAwesomeIcon icon={faPlus} height="13px" width="13px" />
+            <FontAwesomeIcon icon={faPlus} height="15px" width="15px" />
           </div>
         </Tooltip>
       ) : null}
@@ -62,9 +62,9 @@ export const FileBar = ({ files = [], isMe, postId }: fileBarProps) => {
                 >
                   <div className={styles["file-bar__attachments-modal"]}>
                     {name}
-                    <img
+                    <embed
                       src={base64}
-                      alt="Attachment"
+                      title={name}
                       className={styles["file-bar__attachments-image"]}
                     />
                   </div>
