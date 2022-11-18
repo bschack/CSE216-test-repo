@@ -1,0 +1,63 @@
+@use "../../styles/lib/variables";
+
+.file-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.7rem;
+  width: 100%;
+  overflow: hidden;
+
+  &__attachments {
+    display: flex;
+    flex-direction: row;
+    gap: 0.7rem;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: variables.$gradient-background-purple;
+      border-radius: variables.$border-radius-l;
+    }
+
+    &-image {
+      width: calc(15rem + 12vw);
+    }
+
+    &-modal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+    }
+  }
+
+  &__add,
+  &__pill {
+    display: flex;
+    flex-direction: row;
+    padding: .4rem;
+    border-radius: variables.$border-radius-s;
+    background: variables.$color-background-dp7;
+    font-size: small;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    align-items: center;
+    gap: 0.4rem;
+
+    &-menu:hover {
+      color: variables.$color-secondary;
+    }
+  }
+}

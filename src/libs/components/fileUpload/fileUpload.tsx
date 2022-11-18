@@ -5,15 +5,27 @@ import { fileUploadProps } from "./fileUpload.types";
 
 import styles from "./fileUpload.module.scss";
 import clsx from "clsx";
+import { fileProps } from "../../constants/types";
 
-export const FileUpload = ({ closeModal }: fileUploadProps) => {
+export const FileUpload = ({ closeModal, postId }: fileUploadProps) => {
   const [base64, setBase64] = useState<string | ArrayBuffer | null>(null);
   const [fileName, setFileName] = useState<string>("");
   const [chosen, setChosen] = useState<boolean>(false);
 
   const handleSubmit = () => {
-    if (!chosen || base64 === null || fileName.length < 4) return;
-    console.log("submitted");
+    if (
+      !chosen ||
+      typeof base64 !== "string" ||
+      base64 === null ||
+      fileName.length < 4
+    )
+      return;
+    const file: fileProps = {
+      postId: postId,
+      name: fileName,
+      base64: base64
+    };
+    console.log(file);
     closeModal();
   };
 
@@ -47,6 +59,7 @@ export const FileUpload = ({ closeModal }: fileUploadProps) => {
 
   return (
     <form className={styles["file-upload"]}>
+      <h4 className={styles["file-upload__title"]}>Upload File</h4>
       <label className={styles["file-upload__file-field"]}>
         <input
           type="file"
@@ -60,7 +73,7 @@ export const FileUpload = ({ closeModal }: fileUploadProps) => {
             icon={faCloudArrowUp}
             className={clsx(chosen ? styles["file-upload__chosen"] : null)}
           />{" "}
-          Upload File
+          Choose File
         </div>
       </label>
       <label className={styles["file-upload__file-name-container"]}>

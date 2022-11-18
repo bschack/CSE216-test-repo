@@ -1,4 +1,5 @@
 import { Key } from "react";
+import { fileProps } from "../../constants/types";
 
 export type postCardProps = {
   id: number;
@@ -14,4 +15,5 @@ export type postCardProps = {
   vote?: string;
   updated: boolean;
   postPage?: boolean;
+  files?: fileProps[];
 };

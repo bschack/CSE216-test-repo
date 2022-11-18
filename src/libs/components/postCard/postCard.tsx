@@ -3,13 +3,11 @@ import { formatDate } from "../../utils/formatter";
 import { StatsBar } from "../statsBar/statsBar";
 import { Link } from "react-router-dom";
 import { Tooltip } from "../tooltip/tooltip";
+import { FileBar } from "../fileBar/fileBar";
 import Linkify from "linkify-react";
 
 import styles from "./postCard.module.scss";
 import clsx from "clsx";
-import useModal from "../../hooks/useModal";
-import Modal from "../../content/modal/modal";
-import { FileUpload } from "../fileUpload/fileUpload";
 
 export const PostCard = ({
   id,
@@ -22,10 +20,9 @@ export const PostCard = ({
   userId,
   vote,
   updated,
+  files,
   postPage = false
 }: postCardProps) => {
-  const { isShowing, toggleModal } = useModal();
-
   const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
   const isMe = userId === uid;
 
@@ -52,7 +49,9 @@ export const PostCard = ({
       {date ? (
         <div className={styles["post-card__date"]}>{formatDate(date)}</div>
       ) : null}
-      {isMe ? <div onClick={toggleModal}>+</div> : null}
+      {(files && files.length > 0) || isMe ? (
+        <FileBar isMe={isMe} files={files} postId={id} />
+      ) : null}
       <StatsBar
         postPage={postPage}
         id={id}
@@ -63,9 +62,6 @@ export const PostCard = ({
         vote={vote}
         updated={updated}
       />
-      <Modal isShowing={isShowing} hide={toggleModal}>
-        <FileUpload closeModal={toggleModal} />
-      </Modal>
     </div>
   );
 };

@@ -48,3 +48,9 @@ export type commentProps = {
   edited: boolean;
   username: string;
 };
+
+export type fileProps = {
+  postId: number;
+  base64: string;
+  name: string;
+};

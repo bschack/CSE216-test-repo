@@ -1,0 +1,61 @@
+@use "../../styles/lib/variables";
+
+.file-edit {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+
+  &__title {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: variables.$font-color-sub;
+  }
+
+  &__file {
+    &-name {
+      &-container {
+        padding: variables.$padding-s;
+        background: variables.$color-background-dp6;
+        border-radius: variables.$border-radius-xs;
+      }
+
+      font-family: inherit;
+      font-size: inherit;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      color: variables.$font-color-light;
+      outline: none;
+      resize: none;
+    }
+  }
+  &__button {
+    &-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-submit,
+    &-delete {
+      padding: variables.$padding-xs;
+      border-radius: variables.$border-radius-s;
+      width: min-content;
+      user-select: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    &-submit:hover {
+      border: 1px solid variables.$color-primary;
+      color: variables.$color-primary;
+    }
+    &-delete:hover {
+      border: 1px solid variables.$color-red;
+      color: variables.$color-red;
+    }
+  }
+}
