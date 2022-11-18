@@ -51,7 +51,7 @@ export const FileUpload = ({ closeModal, postId }: fileUploadProps) => {
           const file: fileProps = {
             id: fileId,
             postId: postId,
-            name: fileName,
+            name: fileName.trim(),
             link: url
           };
           await addFile(file).then(() => closeModal());

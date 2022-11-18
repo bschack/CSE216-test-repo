@@ -12,12 +12,13 @@ export const FileEdit = ({ file, closeModal }: editUploadProps) => {
   const [fileName, setFileName] = useState<string>(name);
 
   const handleSubmit = async () => {
-    if (fileName.length < 4) return;
-    if (name === fileName) {
+    const trimmed = fileName.trim();
+    if (trimmed.length < 4) return;
+    if (name === trimmed) {
       closeModal();
       return;
     }
-    await editFile(fileName, id).then(() => closeModal());
+    await editFile(trimmed, id).then(() => closeModal());
   };
 
   const handleDelete = () => {

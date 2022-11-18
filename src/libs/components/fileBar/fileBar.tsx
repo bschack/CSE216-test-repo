@@ -30,7 +30,7 @@ export const FileBar = ({ files = [], isMe, postId }: fileBarProps) => {
           {files?.map((file, i) => {
             const { name, link } = file;
             const displayName =
-              name.length > 10 ? `${name.substring(0, 7)}...` : name;
+              name.length > 10 ? `${name.substring(0, 7).trim()}...` : name;
             return (
               <Tooltip tip={name} key={i}>
                 <a
