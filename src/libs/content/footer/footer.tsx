@@ -1,11 +1,12 @@
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { Tooltip } from "../../components/tooltip/tooltip";
 import { changeTheme } from "../../styles/lib/changeTheme";
+
 import styles from "./footer.module.scss";
+import clsx from "clsx";
 
 export const Footer = () => {
   const theme = window.localStorage.getItem("theme")!;

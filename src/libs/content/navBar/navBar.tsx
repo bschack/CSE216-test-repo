@@ -1,6 +1,7 @@
-import clsx from "clsx";
 import { Link, useLocation } from "react-router-dom";
+
 import styles from "./navBar.module.scss";
+import clsx from "clsx";
 
 export const NavBar = () => {
   const path = useLocation().pathname;

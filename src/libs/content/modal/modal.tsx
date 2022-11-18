@@ -1,8 +1,8 @@
 import { modalProps } from "./modal.types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
-import ReactDOM from "react-dom";
 
+import ReactDOM from "react-dom";
 import styles from "./modal.module.scss";
 
 const Modal = ({ children, isShowing, hide }: modalProps) =>

@@ -4,8 +4,8 @@ import { StatsBar } from "../statsBar/statsBar";
 import { Link } from "react-router-dom";
 import { Tooltip } from "../tooltip/tooltip";
 import { FileBar } from "../fileBar/fileBar";
-import Linkify from "linkify-react";
 
+import Linkify from "linkify-react";
 import styles from "./postCard.module.scss";
 import clsx from "clsx";
 

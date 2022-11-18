@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import styles from "./section.module.scss";
 import { sectionProps } from "./section.types";
+
+import styles from "./section.module.scss";
+import clsx from "clsx";
 
 export const Section = ({
   children,
