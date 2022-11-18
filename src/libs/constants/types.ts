@@ -50,7 +50,8 @@ export type commentProps = {
 };
 
 export type fileProps = {
+  id: string;
   postId: number;
-  base64: string;
+  link: string;
   name: string;
 };

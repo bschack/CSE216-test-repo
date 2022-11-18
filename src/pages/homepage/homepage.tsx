@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { PostCard } from "../../libs/components/postCard/postCard";
 import { PostForm } from "../../libs/components/postForm/postForm";
-import { postProps } from "../../libs/constants/types";
+import { fileProps, postProps } from "../../libs/constants/types";
 import { Section } from "../../libs/content/section/section";
 import { getAllPosts } from "../../libs/api/getAllPosts";
 import { homepageProps } from "./homepage.types";
@@ -24,6 +24,15 @@ const Homepage = ({ alerts }: homepageProps) => {
   const canDisplayPosts = dataLength > 0 && posts;
   const canDisplayNew = newPost && canDisplayPosts;
   const numberShown = Math.min(displayed, dataLength);
+
+  const files: fileProps[] = [
+    {
+      id: "bb8d468b566fd045",
+      name: "Screen Shot 2022-11-18 at 12.05.20 PM.png",
+      postId: 12,
+      link: "https://firebasestorage.googleapis.com/v0/b/cse216-blend.appspot.com/o/files%2Fbb8d468b566fd045?alt=media&token=ade25ac2-5a07-4a05-9ba4-db35a034be67"
+    }
+  ];
 
   const loadMore = () => {
     setDisplayed(displayed + 20);
@@ -98,6 +107,7 @@ const Homepage = ({ alerts }: homepageProps) => {
                   username={post.username}
                   vote={post.vote}
                   updated={updated}
+                  files={files.filter((f) => f.postId === post.postId)}
                 />
               ))}
             {numberShown !== dataLength ? (

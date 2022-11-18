@@ -1,4 +1,6 @@
+import { fileProps } from "../../constants/types";
+
 export type editUploadProps = {
-  name: string;
+  file: fileProps;
   closeModal: () => void;
 };

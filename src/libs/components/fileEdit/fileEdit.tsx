@@ -1,18 +1,35 @@
 import { useState } from "react";
 import { editUploadProps } from "./fileEdit.types";
+import { ref, deleteObject } from "firebase/storage";
+import { deleteFile, editFile } from "../../api/fileActions";
 
+import storage from "../../../config/firebaseConfig";
 import styles from "./fileEdit.module.scss";
 
-export const FileEdit = ({ name, closeModal }: editUploadProps) => {
+export const FileEdit = ({ file, closeModal }: editUploadProps) => {
+  const { id, name } = file;
+
   const [fileName, setFileName] = useState<string>(name);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (fileName.length < 4) return;
-    closeModal();
+    if (name === fileName) {
+      closeModal();
+      return;
+    }
+    await editFile(fileName, id).then(() => closeModal());
   };
 
   const handleDelete = () => {
-    closeModal();
+    const storageRef = ref(storage, `files/${id}`);
+
+    deleteObject(storageRef)
+      .then(async () => {
+        await deleteFile(file).then(() => closeModal());
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleChange = (e: any) => {
