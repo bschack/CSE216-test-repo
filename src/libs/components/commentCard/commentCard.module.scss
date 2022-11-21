@@ -9,7 +9,7 @@
     gap: 1.3rem;
     max-width: calc(50rem + 20vw);
     height: fit-content;
-    min-width: 25%;
+    min-width: calc(100% - 3.2rem);
 
     background: variables.$color-background-dp2;
     box-shadow: variables.$shadow;
@@ -56,22 +56,6 @@
       }
     }
 
-    &-cancel {
-      border-color: variables.$font-color-sub;
-      color: variables.$font-color-sub;
-      &:hover {
-        background-color: #80808021;
-      }
-    }
-
-    &-submit {
-      border-color: variables.$color-primary;
-      color: variables.$color-primary;
-      &:hover {
-        background-color: #bb86fc21;
-      }
-    }
-
     &-group {
       display: flex;
       flex-direction: row;
@@ -104,28 +88,6 @@
     font-weight: 400;
     font-size: .9rem;
     line-height: 1.2rem;
-  }
-
-  &__form {
-    font-family: inherit;
-    height: -moz-fit-content;
-    height: 5rem;
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    color: variables.$font-color-light;
-    outline: none;
-    word-wrap: break-word;
-    resize: none;
-    overflow: scroll;
-  }
-
-  &__counter {
-    width: 100%;
-    text-align: end;
-    color: #808080;
-    font-size: .75rem;
-    padding-bottom: 2px;
   }
 }
 

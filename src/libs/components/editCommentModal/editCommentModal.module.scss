@@ -1,0 +1,78 @@
+@use "../../styles/lib/variables";
+
+.edit-comment {
+  &__button {
+    padding: variables.$padding-xs;
+    border-radius: variables.$border-radius-s;
+    width: min-content;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-submit:hover {
+      border: 1px solid variables.$color-primary;
+      color: variables.$color-primary;
+    }
+
+    &-cancel:hover {
+      border: 1px solid variables.$color-red;
+      color: variables.$color-red;
+    }
+  }
+
+  &__form {
+    font-family: inherit;
+    font-size: inherit;
+    height: -moz-fit-content;
+    height: 8em;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: variables.$font-color-light;
+    outline: none;
+    word-wrap: break-word;
+    resize: none;
+    overflow: scroll;
+  }
+
+  &__counter {
+    width: 100%;
+    color: #808080;
+    font-size: .75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+
+    & > span:first-child {
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background-color: variables.$font-color-sub;
+      bottom: 0;
+    }
+
+    & > span:nth-child(2) {
+      position: absolute;
+      width: 0;
+      left: 50%;
+      height: 2px;
+      bottom: -0.5px;
+      right: 0;
+      background-color: variables.$color-blue;
+      transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    &-active > span:nth-child(2) {
+      left: 0;
+      width: 100%;
+    }
+  }
+}

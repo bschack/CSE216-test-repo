@@ -1,0 +1,30 @@
+@use "../../styles/lib/variables";
+
+.active-bar {
+  position: relative;
+  width: 100%;
+
+  & > span:first-child {
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: variables.$font-color-sub;
+    bottom: 0;
+  }
+
+  & > span:nth-child(2) {
+    position: absolute;
+    width: 0;
+    left: 50%;
+    height: 2px;
+    bottom: -0.5px;
+    right: 0;
+    background-color: variables.$color-pink;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  &__active > span:nth-child(2) {
+    left: 0;
+    width: 100%;
+  }
+}

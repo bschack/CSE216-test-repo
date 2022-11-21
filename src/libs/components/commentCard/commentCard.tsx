@@ -1,52 +1,26 @@
-import { useState } from "react";
+import { EditCommentModal } from "../editCommentModal/editCommentModal";
+import { FileBar } from "../fileBar/fileBar";
 import { Link } from "react-router-dom";
-import { editComment } from "../../api/editComment";
 import { formatDate } from "../../utils/formatter";
 import { Tooltip } from "../tooltip/tooltip";
 import { commentCardProps } from "./commentCard.types";
+
+import useModal from "../../hooks/useModal";
 
 import styles from "./commentCard.module.scss";
 import clsx from "clsx";
 
 export const CommentCard = ({ comment }: commentCardProps) => {
-  const [editing, setEditing] = useState<boolean>(false);
+  const { isShowing: editing, toggleModal: toggleEditing } = useModal();
+  const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
 
   const message = comment?.content;
-  const [newMessage, setNewMessage] = useState<string>(message);
-
-  const uid = parseInt(window.sessionStorage.getItem("uid") || "-1");
   const userId = comment?.userId;
   const username = comment?.username;
   const date = comment?.date!;
   const edited = comment?.edited;
   const commentId = comment.commentId;
-  const canEdit = !editing && uid === userId;
-
-  const edit = () => {
-    setEditing(true);
-  };
-
-  const cancelEdit = () => {
-    setEditing(false);
-    setNewMessage("");
-  };
-
-  const handleChange = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setNewMessage(e.target.value);
-  };
-
-  const handleSubmit = async (e: any) => {
-    await editComment(newMessage, commentId)
-      .then(() => {
-        setEditing(false);
-        setNewMessage("");
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
-  };
+  const isMe = uid === userId;
 
   return (
     <div className={clsx(styles["comment-card__container"])}>
@@ -60,61 +34,32 @@ export const CommentCard = ({ comment }: commentCardProps) => {
           </Link>
         </Tooltip>
 
-        {canEdit ? (
+        {isMe && (
           <div
             className={clsx(
               styles["comment-card__button-edit"],
               styles["comment-card__button"]
             )}
-            onClick={edit}
+            onClick={toggleEditing}
           >
             Edit
           </div>
-        ) : null}
-        {editing ? (
-          <div className={styles["comment-card__button-group"]}>
-            <div
-              className={clsx(
-                styles["comment-card__button-cancel"],
-                styles["comment-card__button"]
-              )}
-              onClick={cancelEdit}
-            >
-              Cancel
-            </div>
-            <div
-              className={clsx(
-                styles["comment-card__button-submit"],
-                styles["comment-card__button"]
-              )}
-              onClick={handleSubmit}
-            >
-              Submit
-            </div>
-          </div>
-        ) : null}
+        )}
       </div>
-      {!editing ? (
-        <div className={styles["comment-card__content"]}>{message}</div>
-      ) : (
-        <>
-          <textarea
-            name="biography"
-            value={newMessage}
-            onChange={handleChange}
-            placeholder={message}
-            maxLength={256}
-            className={styles["comment-card__form"]}
-          />
-          <div
-            className={clsx(styles["comment-card__counter"])}
-          >{`${newMessage.length}/256`}</div>
-        </>
-      )}
+
+      <div className={styles["comment-card__content"]}>{message}</div>
+
       <div className={styles["comment-card__date"]}>
-        {edited ? "Edited • " : null}
+        {edited && "Edited • "}
         {formatDate(date)}
       </div>
+      <FileBar files={[]} id={commentId} isMe={isMe} />
+      <EditCommentModal
+        commentId={commentId}
+        message={message}
+        hide={toggleEditing}
+        editing={editing}
+      />
     </div>
   );
 };
