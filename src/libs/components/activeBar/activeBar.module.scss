@@ -20,7 +20,7 @@
     bottom: -0.5px;
     right: 0;
     background-color: variables.$color-pink;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   &__active > span:nth-child(2) {

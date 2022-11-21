@@ -1,0 +1,17 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 3px;
+
+  &__number {
+    color: #808080;
+    font-size: .75rem;
+    width: 100%;
+    text-align: end;
+
+    &-hidden {
+      display: none;
+    }
+  }
+}

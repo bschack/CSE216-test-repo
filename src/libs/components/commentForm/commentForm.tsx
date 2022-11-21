@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { postFormProps } from "./commentForm.types";
 import { createNewComment } from "../../api/createNewComment";
+import { Counter } from "../counter/counter";
 
 import styles from "./commentForm.module.scss";
 import clsx from "clsx";
@@ -11,6 +12,7 @@ import clsx from "clsx";
 export const CommentForm = ({ disabled, postId }: postFormProps) => {
   const [message, setMessage] = useState("");
   const [focus, setFocus] = useState(false);
+  const [fieldFocus, setFieldFocus] = useState(false);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -65,29 +67,35 @@ export const CommentForm = ({ disabled, postId }: postFormProps) => {
           maxLength={256}
           className={clsx(
             styles["comment-form__textbox"],
-            focus ? styles["comment-form__textbox-active"] : null
+            focus && styles["comment-form__textbox-active"]
           )}
-          onFocus={() => setFocus(true)}
+          onFocus={() => {
+            setFocus(true);
+            setFieldFocus(true);
+          }}
           onBlur={() => {
             if (!message.length) setFocus(false);
+            setFieldFocus(false);
           }}
           disabled={loading || disabled}
           onKeyDownCapture={(e) => {
             if (e.key === "Enter" && !e.shiftKey) handleSubmit(e);
           }}
         />
-        <div
-          className={clsx(
-            styles["comment-form__counter"],
-            focus ? styles["comment-form__counter-active"] : null
-          )}
-        >{`${message.length}/256`}</div>
+        <Counter
+          active={focus}
+          duration={1}
+          length={message.length}
+          maxLength={256}
+          barActive={fieldFocus}
+          hideOnInactive
+        />
         {!loading ? (
           <div
             className={clsx(
               styles["comment-form__submit"],
-              failed ? styles["comment-form__submit-failed"] : null,
-              !postCheck ? styles["comment-form__submit-disabled"] : null
+              failed && styles["comment-form__submit-failed"],
+              !postCheck && styles["comment-form__submit-disabled"]
             )}
             onClick={(e) => {
               if (postCheck) handleSubmit(e);

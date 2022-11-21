@@ -1,12 +1,12 @@
 import { editCommentProps } from "./editCommentModal.types";
 import { editComment } from "../../api/editComment";
 import { useState } from "react";
+import { Counter } from "../counter/counter";
 
 import Modal from "../../content/modal/modal";
 
 import styles from "./editCommentModal.module.scss";
 import clsx from "clsx";
-import { ActiveBar } from "../activeBar/activeBar";
 
 export const EditCommentModal = ({
   commentId,
@@ -46,10 +46,7 @@ export const EditCommentModal = ({
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
       />
-      <div className={clsx(styles["edit-comment__counter"])}>
-        {`${newMessage.length}/256`}
-        <ActiveBar active={focus} />
-      </div>
+      <Counter active={focus} length={newMessage.length} maxLength={256} />
       <div className={styles["edit-comment__button-group"]}>
         <div
           className={clsx(

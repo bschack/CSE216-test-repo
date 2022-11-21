@@ -8,10 +8,12 @@ import { postFormProps } from "./postForm.types";
 
 import styles from "./postForm.module.scss";
 import clsx from "clsx";
+import { Counter } from "../counter/counter";
 
 export const PostForm = ({ alerts, disabled }: postFormProps) => {
   const [message, setMessage] = useState("");
   const [focus, setFocus] = useState(false);
+  const [fieldFocus, setFieldFocus] = useState(false);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -68,21 +70,27 @@ export const PostForm = ({ alerts, disabled }: postFormProps) => {
             styles["post-form__textbox"],
             focus ? styles["post-form__textbox-active"] : null
           )}
-          onFocus={() => setFocus(true)}
+          onFocus={() => {
+            setFocus(true);
+            setFieldFocus(true);
+          }}
           onBlur={() => {
             if (!message.length) setFocus(false);
+            setFieldFocus(false);
           }}
           disabled={loading /*|| disabled*/}
           onKeyDownCapture={(e) => {
             if (e.key === "Enter" && !e.shiftKey) handleSubmit(e);
           }}
         />
-        <div
-          className={clsx(
-            styles["post-form__counter"],
-            focus ? styles["post-form__counter-active"] : null
-          )}
-        >{`${message.length}/1024`}</div>
+        <Counter
+          length={message.length}
+          maxLength={1024}
+          active={focus}
+          duration={1}
+          barActive={fieldFocus}
+          hideOnInactive
+        />
         {!loading ? (
           <div
             className={clsx(

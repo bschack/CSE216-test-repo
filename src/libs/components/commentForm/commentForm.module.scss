@@ -127,17 +127,12 @@
     text-align: end;
     color: #808080;
     font-size: .75rem;
-    border-bottom: 1px solid #808080;
-    padding-bottom: 2px;
-    width: 0;
     display: none;
     overflow: hidden;
-  }
 
-  &__counter-active {
-    display: block;
-    animation: appear 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-    width: 100%;
+    &-active {
+      display: block;
+    }
   }
 
   @keyframes expand {
