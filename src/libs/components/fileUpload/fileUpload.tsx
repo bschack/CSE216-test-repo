@@ -12,7 +12,7 @@ import storage from "../../../config/firebaseConfig";
 import styles from "./fileUpload.module.scss";
 import clsx from "clsx";
 
-export const FileUpload = ({ closeModal, postId }: fileUploadProps) => {
+export const FileUpload = ({ closeModal, targetId, post }: fileUploadProps) => {
   //const [base64, setBase64] = useState<string | ArrayBuffer | null>(null);
   const [fileName, setFileName] = useState<string>("");
   const [chosen, setChosen] = useState<boolean>(false);
@@ -50,11 +50,11 @@ export const FileUpload = ({ closeModal, postId }: fileUploadProps) => {
         getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
           const file: fileProps = {
             id: fileId,
-            postId: postId,
+            postId: targetId,
             name: fileName.trim(),
             link: url
           };
-          await addFile(file).then(() => closeModal());
+          await addFile(file, post).then(() => closeModal());
         });
       }
     );
@@ -92,7 +92,6 @@ export const FileUpload = ({ closeModal, postId }: fileUploadProps) => {
 
   return (
     <form className={styles["file-upload"]}>
-      <h4 className={styles["file-upload__title"]}>Upload File</h4>
       <label className={styles["file-upload__file-field"]}>
         <input
           type="file"

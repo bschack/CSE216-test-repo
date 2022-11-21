@@ -11,7 +11,7 @@ import Modal from "../../content/modal/modal";
 import useModal from "../../hooks/useModal";
 import styles from "./fileBar.module.scss";
 
-export const FileBar = ({ files = [], isMe, postId }: fileBarProps) => {
+export const FileBar = ({ files = [], isMe, id, post }: fileBarProps) => {
   const { isShowing: upModalShow, toggleModal: upModalToggle } = useModal();
   const { isShowing: editModalShow, toggleModal: editModalToggle } = useModal();
   const [file, setFile] = useState<fileProps>();
@@ -58,10 +58,10 @@ export const FileBar = ({ files = [], isMe, postId }: fileBarProps) => {
           })}
         </div>
       ) : null}
-      <Modal isShowing={upModalShow} hide={upModalToggle}>
-        <FileUpload closeModal={upModalToggle} postId={postId} />
+      <Modal isShowing={upModalShow} hide={upModalToggle} title="Upload File">
+        <FileUpload closeModal={upModalToggle} targetId={id} post={post} />
       </Modal>
-      <Modal isShowing={editModalShow} hide={editModalToggle}>
+      <Modal isShowing={editModalShow} hide={editModalToggle} title="Edit File">
         <FileEdit file={file!} closeModal={editModalToggle} />
       </Modal>
     </div>

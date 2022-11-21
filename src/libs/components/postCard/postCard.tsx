@@ -50,7 +50,7 @@ export const PostCard = ({
         <div className={styles["post-card__date"]}>{formatDate(date)}</div>
       ) : null}
       {(files && files.length > 0) || isMe ? (
-        <FileBar isMe={isMe} files={files} postId={id} />
+        <FileBar isMe={isMe} files={files} id={id} post={true} />
       ) : null}
       <StatsBar
         postPage={postPage}

@@ -16,6 +16,14 @@
   z-index: 20;
   animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
+  &__title {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: variables.$font-color-sub;
+  }
+
   &__body {
     background: variables.$color-background-dp2;
     display: flex;
@@ -27,6 +35,7 @@
     //aspect-ratio: 3/2;
     padding: 1rem variables.$padding-l;
     border-radius: variables.$border-radius-l;
+    gap: 0.7rem;
     // justify-content: space-between;
 
     &-close {

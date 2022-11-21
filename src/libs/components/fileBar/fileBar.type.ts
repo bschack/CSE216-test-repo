@@ -1,7 +1,8 @@
 import { fileProps } from "../../constants/types";
 
 export type fileBarProps = {
-  postId: number;
+  id: number;
   files?: fileProps[];
   isMe: boolean;
+  post?: boolean;
 };

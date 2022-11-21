@@ -5,7 +5,7 @@ import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import ReactDOM from "react-dom";
 import styles from "./modal.module.scss";
 
-const Modal = ({ children, isShowing, hide }: modalProps) =>
+const Modal = ({ title, children, isShowing, hide }: modalProps) =>
   isShowing
     ? ReactDOM.createPortal(
         <div className={styles["modal"]}>
@@ -13,6 +13,7 @@ const Modal = ({ children, isShowing, hide }: modalProps) =>
             <div className={styles["modal__body-close"]}>
               <FontAwesomeIcon icon={faCircleXmark} onClick={hide} />
             </div>
+            {title && <h4 className={styles["modal__title"]}>{title}</h4>}
             {children}
           </div>
         </div>,

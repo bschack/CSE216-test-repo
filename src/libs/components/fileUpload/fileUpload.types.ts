@@ -1,4 +1,5 @@
 export type fileUploadProps = {
   closeModal: () => void;
-  postId: number;
+  targetId: number;
+  post?: boolean;
 };

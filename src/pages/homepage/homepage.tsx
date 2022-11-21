@@ -31,6 +31,12 @@ const Homepage = ({ alerts }: homepageProps) => {
       name: "Screen Shot 2022-11-18 at 12.05.20 PM.png",
       postId: 12,
       link: "https://firebasestorage.googleapis.com/v0/b/cse216-blend.appspot.com/o/files%2Fbb8d468b566fd045?alt=media&token=ade25ac2-5a07-4a05-9ba4-db35a034be67"
+    },
+    {
+      id: "a0e837d9c7c83d8e",
+      postId: 12,
+      name: "test pdf",
+      link: "https://firebasestorage.googleapis.com/v0/b/cse216-blend.appspot.com/o/files%2Fa0e837d9c7c83d8e?alt=media&token=5db89b3b-e790-4c75-b073-d28c267ac795"
     }
   ];
 

@@ -40,7 +40,6 @@ export const FileEdit = ({ file, closeModal }: editUploadProps) => {
 
   return (
     <form className={styles["file-edit"]}>
-      <h4 className={styles["file-edit__title"]}>Edit File</h4>
       <label className={styles["file-edit__file-name-container"]}>
         <input
           type="text"
