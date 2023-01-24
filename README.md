@@ -1,3 +1,5 @@
+### Checkout the mockup design for this site [here](https://www.figma.com/file/NjXTEcWebuoa6aYKqgRya4/Web?node-id=0%3A1&t=YySXF81sOrFrZ3es-0)!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
